@@ -92,3 +92,161 @@ ul {
     background-color: var(--cor-destaque);
     transition: width 0.3s ease;
 }
+
+.nav-link:hover {
+    color: var(--cor-destaque);
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* Botões (Classe global que usaremos no site todo) */
+.btn {
+    display: inline-block;
+    padding: 0.8rem 1.8rem;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* Botão de Destaque do Header */
+.btn-destaque {
+    background-color: var(--cor-destaque);
+    color: var(--cor-secundaria); /* Texto preto no fundo amarelo */
+    border: 2px solid var(--cor-destaque);
+}
+
+.btn-destaque:hover {
+    background-color: transparent;
+    color: var(--cor-destaque);
+}
+
+/* ==========================================
+   4. SEÇÃO HERO (PRINCIPAL)
+   ========================================== */
+.hero-section {
+    padding: 6rem 0; /* Espaçamento generoso em cima e embaixo */
+    background-color: var(--cor-primaria);
+    overflow: hidden; /* Evita que elementos vazem para os lados */
+}
+
+.container-hero {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex; /* Coloca texto e imagem lado a lado */
+    align-items: center; /* Centraliza verticalmente */
+    justify-content: space-between;
+    gap: 4rem; /* Espaço entre o texto e a imagem */
+}
+
+/* --- Lado Esquerdo: Conteúdo --- */
+.hero-conteudo {
+    flex: 1; /* Ocupa metade do espaço disponível */
+    max-width: 600px;
+}
+
+.hero-titulo {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: var(--cor-secundaria);
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    letter-spacing: -1px; /* Deixa o título mais moderno e compacto */
+}
+
+.hero-descricao {
+    font-size: 1.15rem;
+    color: var(--cor-texto);
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
+}
+
+/* --- Lado Esquerdo: Botões --- */
+.hero-botoes {
+    display: flex;
+    gap: 1.5rem;
+}
+
+/* Estilo do Botão Primário (Amarelo) */
+.btn-primario {
+    background-color: var(--cor-destaque);
+    color: var(--cor-secundaria);
+    border: 2px solid var(--cor-destaque);
+}
+
+.btn-primario:hover {
+    background-color: transparent;
+    color: var(--cor-destaque);
+}
+
+/* Estilo do Botão Secundário (Contorno Preto/Cinza Escuro) */
+.btn-secundario {
+    background-color: transparent;
+    color: var(--cor-secundaria);
+    border: 2px solid var(--cor-secundaria);
+}
+
+.btn-secundario:hover {
+    background-color: var(--cor-secundaria);
+    color: var(--cor-primaria);
+}
+
+/* --- Lado Direito: Imagem --- */
+.hero-imagem-container {
+    flex: 1; /* Ocupa a outra metade do espaço */
+    display: flex;
+    justify-content: flex-end; /* Empurra a imagem para a direita */
+}
+
+.hero-img {
+    width: 100%;
+    max-width: 550px;
+    height: auto;
+    border-radius: 12px; /* Bordas arredondadas e elegantes */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1); /* Sombra suave para dar profundidade */
+    object-fit: cover; /* Garante que a imagem não distorça */
+}
+
+
+
+/* ==========================================
+   . RESPONSIVIDADE DO HEADER (Mobile)
+   ========================================== */
+@media (max-width: 992px) {
+    .container-hero {
+        flex-direction: column; /* Empilha texto em cima e imagem embaixo */
+        text-align: center; /* Centraliza o texto */
+        gap: 3rem;
+        padding-top: 3rem;
+    }
+
+    .hero-titulo {
+        font-size: 2.5rem;
+    }
+
+    .hero-botoes {
+        justify-content: center; /* Centraliza os botões */
+    }
+
+    .hero-imagem-container {
+        justify-content: center; /* Centraliza a imagem */
+    }
+}
+
+@media (max-width: 600px) {
+    .hero-botoes {
+        flex-direction: column; /* Empilha os botões no celular */
+        gap: 1rem;
+    }
+    
+    .hero-botoes .btn {
+        width: 100%; /* Botões ocupam 100% da tela no celular */
+    }
+}
