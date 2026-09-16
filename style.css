@@ -1,0 +1,21 @@
+/* ==========================================
+   1. VARIÁVEIS GERAIS E PALETA DE CORES
+   ========================================== */
+:root {
+    --cor-primaria: #ffffff;      /* Branco - Predominante */
+    --cor-secundaria: #111111;    /* Preto - Textos, títulos e contraste */
+    --cor-destaque: #D4AF37;      /* Amarelo Sofisticado (tom puxado pro ouro/mostarda) */
+    --cor-texto: #444444;         /* Cinza escuro para textos de parágrafos (mais suave que o preto puro) */
+    --cor-fundo: #F8F9FA;         /* Fundo levemente cinza para algumas seções futuras */
+    
+    --fonte-principal: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* ==========================================
+   2. RESET BÁSICO (Para limpar o padrão do navegador)
+   ========================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
