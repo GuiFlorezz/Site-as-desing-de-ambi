@@ -55,3 +55,24 @@ ul {
     justify-content: space-between;
     align-items: center;
 }
+
+/* Logo */
+.logo-link {
+    display: flex;
+    align-items: center;
+}
+
+.logo-texto {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--cor-secundaria);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Navegaçao */
+.nav-link{
+    color: var(--cor-secundaria);
+    font-weight: 500;
+    font-size: 0.95rem;
+}
