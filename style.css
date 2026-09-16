@@ -19,3 +19,39 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+body {
+    font-family: var(--fonte-principal);
+    color: var(--cor-texto);
+    background-color: var(--cor-primaria);
+    -webkit-font-smoothing: antialiased;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+/* ==========================================
+   3. CABEÇALHO (HEADER)
+   ========================================== */
+.header-principal {
+    background-color: var(--cor-primaria);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); /* Sombra suave para separar do resto do site */
+    position: sticky; /* Mantém o cabeçalho no topo ao rolar a página */
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+}
+
+.container-header {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1.2rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
