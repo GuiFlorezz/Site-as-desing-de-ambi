@@ -214,7 +214,131 @@ ul {
     object-fit: cover; /* Garante que a imagem não distorça */
 }
 
+/* ==========================================
+   5. ESTILOS GERAIS DE SEÇÃO (Títulos)
+   ========================================== */
 
+.secao-cabecalho{
+    text-align: center;
+    margin-bottom: 3.5rem;
+}
+
+.secao-titulo {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--cor-secundaria);
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+/* Detalhe visual: Uma linha amarela discreta embaixo do título principal */
+.secao-titulo::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background-color: var(--cor-destaque);
+    margin: 1rem auto 0 auto;
+}
+
+.secao-subtitulo {
+    font-size: 1.1rem;
+    color: var(--cor-texto);
+}
+
+/* ==========================================
+   8. SEÇÃO SOBRE
+   ========================================== */
+.sobre-section {
+    background-color: var(--cor-fundo); /* Fundo levemente cinza para destacar */
+    padding: 6rem 2rem;
+}
+
+.container-sobre {
+    max-width: 800px; /* Largura menor para o texto não ficar tão longo e difícil de ler */
+    margin: 0 auto;
+    text-align: center;
+}
+
+.sobre-section .secao-titulo {
+    margin-bottom: 2rem;
+}
+
+.sobre-paragrafo {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    color: var(--cor-texto);
+}
+
+/* ==========================================
+   9. SEÇÃO DE SERVIÇOS
+   ========================================== */
+.servicos-section {
+    background-color: var(--cor-primaria); /* Volta para o fundo branco */
+    padding: 6rem 2rem;
+}
+
+.container-servicos {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.servicos-grid {
+    display: grid;
+    /* Isso cria colunas automáticas e responsivas! */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+/* Estilo individual de cada card de serviço */
+.servico-card {
+    background-color: var(--cor-primaria);
+    border: 1px solid #EBEBEB;
+    border-radius: 8px;
+    padding: 2.5rem 1.5rem;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+/* Efeito Hover: O card "levanta" e ganha uma borda amarela ao passar o mouse */
+.servico-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+    border-color: var(--cor-destaque);
+}
+
+/* Container do ícone */
+.servico-icone {
+    width: 65px;
+    height: 65px;
+    background-color: rgba(212, 175, 55, 0.1); /* Fundo amarelo bem clarinho e transparente */
+    border-radius: 50%;
+    margin: 0 auto 1.5rem auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Como ainda não temos as imagens/svgs dos ícones, vamos usar um CSS falso para simular um ícone dentro do círculo */
+.servico-icone::after {
+    content: '✦'; /* Símbolo genérico para preencher o espaço */
+    color: var(--cor-destaque);
+    font-size: 1.8rem;
+}
+
+.servico-titulo {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--cor-secundaria);
+    margin-bottom: 1rem;
+}
+
+.servico-descricao {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--cor-texto);
+}
 
 /* ==========================================
    . RESPONSIVIDADE DO HEADER (Mobile)
@@ -248,5 +372,18 @@ ul {
     
     .hero-botoes .btn {
         width: 100%; /* Botões ocupam 100% da tela no celular */
+    }
+}
+/* ==========================================
+   . RESPONSIVIDADE (Mobile - Serviços e Sobre)
+   ========================================== */
+@media (max-width: 768px) {
+    .sobre-section,
+    .servicos-section {
+        padding: 4rem 1.5rem; /* Reduz o padding em telas menores */
+    }
+
+    .secao-titulo {
+        font-size: 2rem;
     }
 }
