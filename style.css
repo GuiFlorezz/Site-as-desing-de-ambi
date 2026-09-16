@@ -75,4 +75,20 @@ ul {
     color: var(--cor-secundaria);
     font-weight: 500;
     font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+/* Efeito elegante de linha amarela ao passar o mouse */
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--cor-destaque);
+    transition: width 0.3s ease;
 }
