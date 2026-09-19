@@ -408,6 +408,73 @@ ul {
     transform: translateY(0); /* Faz a legenda subir e aparecer */
 }
 
+
+/* ==========================================
+   13. SEÇÃO DE DIFERENCIAIS
+   ========================================== */
+.diferenciais-section {
+    background-color: var(--cor-primaria); /* Volta para o fundo branco */
+    padding: 6rem 2rem;
+}
+
+.container-diferenciais {
+    max-width: 1000px; /* Um pouco mais estreito para os itens ficarem mais próximos */
+    margin: 0 auto;
+}
+
+.diferenciais-lista {
+    display: grid;
+    /* Cria 2 ou 3 colunas dependendo do tamanho da tela */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem 2rem; /* Espaçamento entre as linhas e colunas */
+}
+
+/* Estilo individual de cada item de diferencial */
+.diferencial-item {
+    display: flex;
+    align-items: center; /* Alinha o ícone e o texto ao centro */
+    gap: 1.2rem; /* Espaço entre o ícone e o texto */
+    
+    background-color: var(--cor-fundo); /* Fundo cinza clarinho do card */
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-left: 4px solid var(--cor-destaque); /* Linha amarela elegante na esquerda */
+    
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Efeito Hover: Move o item levemente para a direita e adiciona sombra */
+.diferencial-item:hover {
+    transform: translateX(5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+/* Container do ícone */
+.diferencial-icone {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 35px;
+    height: 35px;
+    background-color: rgba(212, 175, 55, 0.2); /* Fundo amarelo transparente */
+    border-radius: 50%;
+    color: var(--cor-destaque);
+    flex-shrink: 0; /* Impede que o ícone fique espremido se o texto for grande */
+}
+
+/* Ícone falso de check (✓) enquanto não colocamos imagens/SVGs reais */
+.diferencial-icone::after {
+    content: '✓';
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.diferencial-titulo {
+    font-size: 1.1rem;
+    color: var(--cor-secundaria);
+    font-weight: 600;
+}
+
 /* ==========================================
    . RESPONSIVIDADE DO HEADER (Mobile)
    ========================================== */
@@ -430,6 +497,9 @@ ul {
     .hero-imagem-container {
         justify-content: center; /* Centraliza a imagem */
     }
+    .diferenciais-section {
+        padding: 4rem 1.5rem;
+    }
 }
 
 @media (max-width: 600px) {
@@ -440,6 +510,9 @@ ul {
     
     .hero-botoes .btn {
         width: 100%; /* Botões ocupam 100% da tela no celular */
+    }
+    .diferenciais-section {
+        padding: 4rem 1.5rem;
     }
 }
 /* ==========================================
@@ -462,5 +535,9 @@ ul {
 
     .secao-titulo {
         font-size: 2rem;
+    }
+
+    .diferenciais-section {
+        padding: 4rem 1.5rem;
     }
 }
