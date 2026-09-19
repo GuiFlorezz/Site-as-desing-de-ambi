@@ -475,8 +475,51 @@ ul {
     font-weight: 600;
 }
 
+
 /* ==========================================
-   . RESPONSIVIDADE DO HEADER (Mobile)
+   15. SEÇÃO CTA (CHAMADA PARA AÇÃO)
+   ========================================== */
+.cta-section {
+    background-color: var(--cor-secundaria); /* Fundo escuro (preto) para máximo contraste */
+    padding: 6rem 2rem;
+    text-align: center;
+}
+
+.container-cta {
+    max-width: 800px; /* Mantém o texto contido e fácil de ler */
+    margin: 0 auto;
+}
+
+.cta-titulo {
+    font-size: 2.8rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: var(--cor-primaria); /* Título em branco */
+}
+
+.cta-texto {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    margin-bottom: 2.5rem;
+    color: #e0e0e0; /* Um cinza bem clarinho para o parágrafo (não cansa a vista no fundo preto) */
+}
+
+/* Modificador para deixar o botão do CTA maior que os outros */
+.btn-grande {
+    padding: 1.2rem 3rem;
+    font-size: 1.1rem;
+    box-shadow: 0 10px 20px rgba(212, 175, 55, 0.2); /* Sombra amarela suave */
+}
+
+/* Efeito Hover específico para este botão no fundo escuro */
+.btn-grande:hover {
+    background-color: transparent;
+    color: var(--cor-destaque);
+    box-shadow: none; /* Tira a sombra ao passar o mouse */
+}
+
+/* ==========================================
+   16. RESPONSIVIDADE DO HEADER (Mobile)
    ========================================== */
 @media (max-width: 992px) {
     .container-hero {
@@ -500,6 +543,24 @@ ul {
     .diferenciais-section {
         padding: 4rem 1.5rem;
     }
+
+    .cta-section {
+        padding: 4.5rem 1.5rem;
+    }
+
+    .cta-titulo {
+        font-size: 2.2rem;
+    }
+
+    .cta-texto {
+        font-size: 1.05rem;
+    }
+    
+    .btn-grande {
+        display: block; /* Força o botão a aceitar largura 100% */
+        width: 100%; /* No celular, o botão ocupa toda a largura da tela */
+        padding: 1rem;
+    }
 }
 
 @media (max-width: 600px) {
@@ -513,6 +574,24 @@ ul {
     }
     .diferenciais-section {
         padding: 4rem 1.5rem;
+    }
+
+    .cta-section {
+        padding: 4.5rem 1.5rem;
+    }
+
+    .cta-titulo {
+        font-size: 2.2rem;
+    }
+
+    .cta-texto {
+        font-size: 1.05rem;
+    }
+    
+    .btn-grande {
+        display: block; /* Força o botão a aceitar largura 100% */
+        width: 100%; /* No celular, o botão ocupa toda a largura da tela */
+        padding: 1rem;
     }
 }
 /* ==========================================
@@ -539,5 +618,23 @@ ul {
 
     .diferenciais-section {
         padding: 4rem 1.5rem;
+    }
+
+    .cta-section {
+        padding: 4.5rem 1.5rem;
+    }
+
+    .cta-titulo {
+        font-size: 2.2rem;
+    }
+
+    .cta-texto {
+        font-size: 1.05rem;
+    }
+    
+    .btn-grande {
+        display: block; /* Força o botão a aceitar largura 100% */
+        width: 100%; /* No celular, o botão ocupa toda a largura da tela */
+        padding: 1rem;
     }
 }
