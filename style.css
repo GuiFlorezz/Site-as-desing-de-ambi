@@ -340,6 +340,74 @@ ul {
     color: var(--cor-texto);
 }
 
+
+/* ==========================================
+   11. SEÇÃO DE PROJETOS (GALERIA)
+   ========================================== */
+.projetos-section {
+    background-color: var(--cor-fundo); /* Fundo cinza claro para destacar da seção anterior */
+    padding: 6rem 2rem;
+}
+
+.container-projetos {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.galeria-grid {
+    display: grid;
+    /* Cria colunas automáticas de no mínimo 320px */
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.5rem;
+}
+
+/* Container individual de cada foto */
+.projeto-item {
+    position: relative;
+    border-radius: 8px; /* Bordas arredondadas elegantes */
+    overflow: hidden; /* Esconde o que vazar (necessário para o efeito de zoom) */
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+/* Imagem do projeto */
+.projeto-img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover; /* Faz a imagem preencher o espaço sem distorcer */
+    display: block;
+    transition: transform 0.5s ease; /* Animação suave para o zoom */
+}
+
+/* Legenda (Oculta por padrão no computador) */
+.projeto-legenda {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 2rem 1rem 1rem 1rem;
+    /* Gradiente escuro para dar leitura ao texto */
+    background: linear-gradient(to top, rgba(17, 17, 17, 0.9), transparent);
+    color: var(--cor-primaria); /* Texto branco */
+    font-weight: 600;
+    font-size: 1.2rem;
+    text-align: center;
+    border-bottom: 4px solid var(--cor-destaque); /* Detalhe amarelo na base */
+    
+    /* Prepara o efeito de aparecer de baixo para cima */
+    transform: translateY(100%);
+    transition: transform 0.4s ease;
+}
+
+/* Efeito Hover: O que acontece ao passar o mouse */
+.projeto-item:hover .projeto-img {
+    transform: scale(1.08); /* Dá um zoom suave na imagem */
+}
+
+.projeto-item:hover .projeto-legenda {
+    transform: translateY(0); /* Faz a legenda subir e aparecer */
+}
+
 /* ==========================================
    . RESPONSIVIDADE DO HEADER (Mobile)
    ========================================== */
@@ -381,6 +449,15 @@ ul {
     .sobre-section,
     .servicos-section {
         padding: 4rem 1.5rem; /* Reduz o padding em telas menores */
+    }
+    .projetos-section {
+        padding: 4rem 1.5rem;
+    }
+
+    /* Como no celular não existe "passar o mouse" (hover), 
+       deixamos a legenda sempre visível */
+    .projeto-legenda {
+        transform: translateY(0); 
     }
 
     .secao-titulo {
