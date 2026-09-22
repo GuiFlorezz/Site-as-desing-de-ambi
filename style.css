@@ -101,6 +101,12 @@ ul {
     width: 100%;
 }
 
+.nav-lista {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
 /* Botões (Classe global que usaremos no site todo) */
 .btn {
     display: inline-block;
