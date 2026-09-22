@@ -1,17 +1,19 @@
 /* ==========================================
-   1. HEADER MODO ILHA (SCROLL)
+   1. HEADER MODO ILHA (SCROLL DINÂMICO)
    ========================================== */
-// Seleciona o cabeçalho pelo ID
 const header = document.getElementById('cabecalho');
+const heroSection = document.getElementById('inicio');
 
-// Escuta o evento de rolagem (scroll) da página
 window.addEventListener('scroll', () => {
-    // Verifica se a página rolou mais de 50 pixels para baixo
-    if (window.scrollY > 50) {
-        // Se sim, adiciona a classe que transforma em ilha
+    // Pega a altura total da seção principal (Hero)
+    const heroHeight = heroSection.offsetHeight;
+    
+    // Diminuímos 80px do cálculo para que a ilha se forme 
+    // um pouquinho antes da seção principal sumir completamente, 
+    // garantindo que a transição termine exatamente na troca de seção
+    if (window.scrollY > (heroHeight - 80)) {
         header.classList.add('header-ilha');
     } else {
-        // Se voltou para o topo, remove a classe (volta ao normal)
         header.classList.remove('header-ilha');
     }
 });
