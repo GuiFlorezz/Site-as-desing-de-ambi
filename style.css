@@ -247,7 +247,7 @@ ul {
 }
 
 /* ==========================================
-   8. SEÇÃO SOBRE
+   6. SEÇÃO SOBRE
    ========================================== */
 .sobre-section {
     background-color: var(--cor-fundo); /* Fundo levemente cinza para destacar */
@@ -272,7 +272,7 @@ ul {
 }
 
 /* ==========================================
-   9. SEÇÃO DE SERVIÇOS
+   7. SEÇÃO DE SERVIÇOS
    ========================================== */
 .servicos-section {
     background-color: var(--cor-primaria); /* Volta para o fundo branco */
