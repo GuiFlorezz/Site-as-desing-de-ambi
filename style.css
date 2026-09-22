@@ -524,8 +524,103 @@ ul {
     box-shadow: none; /* Tira a sombra ao passar o mouse */
 }
 
+
 /* ==========================================
-   16. RESPONSIVIDADE DO HEADER (Mobile)
+   17. RODAPÉ (FOOTER)
+   ========================================== */
+.footer-principal {
+    background-color: #0a0a0a; /* Um tom de preto quase absoluto para diferenciar do CTA */
+    color: #cccccc; /* Texto cinza claro para não ofuscar a visão */
+    padding: 4rem 2rem 1.5rem 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05); /* Linha sutil separando do CTA */
+}
+
+.container-footer {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-grid {
+    display: grid;
+    /* Divide em colunas automáticas */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 3rem;
+    margin-bottom: 3rem;
+}
+
+/* --- Coluna 1: Marca --- */
+.footer-marca {
+    color: var(--cor-primaria);
+    font-size: 1.4rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem;
+}
+
+.footer-slogan {
+    color: var(--cor-destaque);
+    font-size: 0.95rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+.footer-local {
+    font-size: 0.9rem;
+    color: #888888;
+}
+
+/* --- Colunas 2 e 3: Links --- */
+.footer-titulo-links {
+    color: var(--cor-primaria);
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+/* Detalhe visual de linha amarela abaixo do título do rodapé */
+.footer-titulo-links::after {
+    content: '';
+    display: block;
+    width: 30px;
+    height: 2px;
+    background-color: var(--cor-destaque);
+    margin-top: 0.5rem;
+}
+
+.footer-lista-links,
+.footer-lista-sociais {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.footer-lista-links a,
+.footer-lista-sociais a {
+    color: #cccccc;
+    font-size: 0.95rem;
+    transition: color 0.3s ease, padding-left 0.3s ease;
+}
+
+/* Efeito Hover: O link fica amarelo e "anda" um pouquinho para a direita */
+.footer-lista-links a:hover,
+.footer-lista-sociais a:hover {
+    color: var(--cor-destaque);
+    padding-left: 5px; 
+}
+
+/* --- Direitos Autorais (Copyright) --- */
+.footer-copyright {
+    text-align: center;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.85rem;
+    color: #777777;
+}
+
+/* ==========================================
+   17. RESPONSIVIDADE DO HEADER (Mobile)
    ========================================== */
 @media (max-width: 992px) {
     .container-hero {
@@ -567,6 +662,23 @@ ul {
         width: 100%; /* No celular, o botão ocupa toda a largura da tela */
         padding: 1rem;
     }
+
+    .footer-principal {
+        padding: 3rem 1.5rem 1.5rem 1.5rem;
+    }
+
+    .footer-grid {
+        gap: 2rem;
+    }
+
+    /* Centraliza o texto da marca no celular para ficar mais harmônico */
+    .footer-coluna:first-child {
+        text-align: center;
+    }
+    
+    .footer-coluna:first-child .footer-titulo-links::after {
+        margin: 0.5rem auto 0 auto;
+    }
 }
 
 @media (max-width: 600px) {
@@ -598,6 +710,23 @@ ul {
         display: block; /* Força o botão a aceitar largura 100% */
         width: 100%; /* No celular, o botão ocupa toda a largura da tela */
         padding: 1rem;
+    }
+
+    .footer-principal {
+        padding: 3rem 1.5rem 1.5rem 1.5rem;
+    }
+
+    .footer-grid {
+        gap: 2rem;
+    }
+
+    /* Centraliza o texto da marca no celular para ficar mais harmônico */
+    .footer-coluna:first-child {
+        text-align: center;
+    }
+    
+    .footer-coluna:first-child .footer-titulo-links::after {
+        margin: 0.5rem auto 0 auto;
     }
 }
 /* ==========================================
@@ -642,5 +771,22 @@ ul {
         display: block; /* Força o botão a aceitar largura 100% */
         width: 100%; /* No celular, o botão ocupa toda a largura da tela */
         padding: 1rem;
+    }
+
+    .footer-principal {
+        padding: 3rem 1.5rem 1.5rem 1.5rem;
+    }
+
+    .footer-grid {
+        gap: 2rem;
+    }
+
+    /* Centraliza o texto da marca no celular para ficar mais harmônico */
+    .footer-coluna:first-child {
+        text-align: center;
+    }
+    
+    .footer-coluna:first-child .footer-titulo-links::after {
+        margin: 0.5rem auto 0 auto;
     }
 }
