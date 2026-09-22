@@ -619,6 +619,37 @@ ul {
     color: #777777;
 }
 
+
+/* ==========================================
+   19. EFEITO MODO ILHA (HEADER SCROLL)
+   ========================================== */
+/* Adiciona uma transição suave no header original para ele não "pular" de tamanho */
+.header-principal {
+    transition: all 0.4s ease; 
+}
+
+/* O container interno também precisa de transição suave */
+.container-header {
+    transition: padding 0.4s ease;
+}
+
+/* Esta é a classe que o JavaScript vai injetar quando rolarmos a página */
+.header-ilha {
+    top: 20px; /* Descola 20px do topo da tela */
+    width: 90%; /* Deixa ele menor que a tela inteira */
+    max-width: 1000px;
+    margin: 0 auto; /* Mantém centralizado */
+    border-radius: 50px; /* Bordas bem arredondadas, estilo pílula/ilha */
+    background-color: rgba(255, 255, 255, 0.95); /* Leve transparência */
+    backdrop-filter: blur(10px); /* Efeito de vidro fosco (vidro/Apple) */
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1); /* Sombra mais pronunciada para parecer que está flutuando */
+}
+
+/* Quando estiver no modo ilha, diminuímos o padding interno para ele ficar mais fino */
+.header-ilha .container-header {
+    padding: 0.6rem 2rem; 
+}
+
 /* ==========================================
    17. RESPONSIVIDADE DO HEADER (Mobile)
    ========================================== */
