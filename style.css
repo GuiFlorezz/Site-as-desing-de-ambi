@@ -621,8 +621,16 @@ ul {
 
 
 /* ==========================================
-   19. EFEITO MODO ILHA (HEADER SCROLL)
+   18. EFEITO MODO ILHA (HEADER SCROLL)
    ========================================== */
+   /* Transição muito mais suave e fluida para o header, o container e o texto */
+.header-principal,
+.container-header,
+.logo-texto,
+.btn {
+    transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1); 
+}
+
 /* Adiciona uma transição suave no header original para ele não "pular" de tamanho */
 .header-principal {
     transition: all 0.4s ease; 
@@ -635,23 +643,33 @@ ul {
 
 /* Esta é a classe que o JavaScript vai injetar quando rolarmos a página */
 .header-ilha {
-    top: 20px; /* Descola 20px do topo da tela */
-    width: 90%; /* Deixa ele menor que a tela inteira */
-    max-width: 1000px;
+    top: 15px; /* Descola 20px do topo da tela */
+    width: 85%; /* Deixa ele menor que a tela inteira */
+    max-width: 900px;
     margin: 0 auto; /* Mantém centralizado */
     border-radius: 50px; /* Bordas bem arredondadas, estilo pílula/ilha */
-    background-color: rgba(255, 255, 255, 0.95); /* Leve transparência */
-    backdrop-filter: blur(10px); /* Efeito de vidro fosco (vidro/Apple) */
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1); /* Sombra mais pronunciada para parecer que está flutuando */
+    background-color: rgba(255, 255, 255, 0.90); /* Leve transparência */
+    backdrop-filter: blur(12px); /* Efeito de vidro fosco (vidro/Apple) */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8); /* Sombra mais pronunciada para parecer que está flutuando */
 }
 
 /* Quando estiver no modo ilha, diminuímos o padding interno para ele ficar mais fino */
 .header-ilha .container-header {
-    padding: 0.6rem 2rem; 
+    padding: 0.5rem 2rem; 
 }
 
+/* Encolhe o tamanho da logo ("headline") */
+.header-ilha .logo-texto {
+    font-size: 1.25rem; /* Era 1.5rem original */
+}
+
+/* Encolhe levemente o botão de orçamento no modo ilha para acompanhar a proporção */
+.header-ilha .btn-destaque {
+    padding: 0.6rem 1.4rem;
+    font-size: 0.85rem;
+}
 /* ==========================================
-   17. RESPONSIVIDADE DO HEADER (Mobile)
+   19. RESPONSIVIDADE DO HEADER (Mobile)
    ========================================== */
 @media (max-width: 992px) {
     .container-hero {
