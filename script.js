@@ -77,3 +77,22 @@ const observadorScroll = new IntersectionObserver((entradas) => {
 elementosAnimar.forEach((elemento) => {
     observadorScroll.observe(elemento);
 });
+/* ==========================================
+   4. CARROSSEL DE PROJETOS
+   ========================================== */
+const galeria = document.querySelector('.galeria-grid');
+const btnPrev = document.getElementById('btn-prev-projeto');
+const btnNext = document.getElementById('btn-next-projeto');
+
+if (galeria && btnPrev && btnNext) {
+    btnNext.addEventListener('click', () => {
+        // Calcula a largura de um card + o gap entre eles
+        const cardWidth = galeria.querySelector('.projeto-item').offsetWidth + 24;
+        galeria.scrollBy({ left: cardWidth, behavior: 'smooth' });
+    });
+
+    btnPrev.addEventListener('click', () => {
+        const cardWidth = galeria.querySelector('.projeto-item').offsetWidth + 24;
+        galeria.scrollBy({ left: -cardWidth, behavior: 'smooth' });
+    });
+}
