@@ -348,122 +348,121 @@ ul {
 
 
 /* ==========================================
-   11. SEÇÃO DE PROJETOS (GALERIA)
+   11. SEÇÃO DE PROJETOS (3D COVERFLOW)
    ========================================== */
 .projetos-section {
-    background-color: var(--cor-fundo); /* Fundo cinza claro para destacar da seção anterior */
-    padding: 6rem 2rem;
-}
-
-.container-projetos {
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-/* Envolvente do slider para posicionar as setas */
-.projetos-slider-container {
-    position: relative;
-    padding: 0 2.5rem;
-}
-
-.galeria-grid {
-    display: flex;
-    gap: 1.5rem;
-    overflow-x: auto;
-    padding: 1rem 0;
-    
-    /* Oculta as barras de rolagem nativas */
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* IE e Edge */
-}
-
-.galeria-grid::-webkit-scrollbar {
-    display: none;
-}
-
-/* Container individual de cada foto */
-.projeto-item {
-    flex: 0 0 calc(33.333% - 1rem); /* Mostra 3 itens por vez no PC */
-    min-width: 280px;
-    position: relative;
-    border-radius: 8px;
+    background-color: var(--cor-fundo, #f9f9f9);
+    padding: 5rem 1rem;
     overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 }
 
-/* Botões do Slider */
+.coverflow-wrapper {
+    position: relative;
+    max-width: 1200px;
+    margin: 2rem auto 0;
+    height: 480px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.galeria-coverflow {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    perspective: 1200px; /* Profundidade 3D */
+    transform-style: preserve-3d;
+}
+
+.projeto-item {
+    position: absolute;
+    width: 260px;
+    height: 420px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), 
+                opacity 0.5s ease, 
+                filter 0.5s ease;
+    cursor: pointer;
+    user-select: none;
+    background-color: #000;
+}
+
+.projeto-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Tag de perfil estilo Instagram sobre a foto */
+.card-tag {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(8px);
+    padding: 6px 14px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    z-index: 2;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.tag-logo {
+    font-weight: 800;
+    font-size: 0.85rem;
+    background: #000;
+    color: #fff;
+    border-radius: 50%;
+    width: 22px;
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tag-text {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #333;
+}
+
+/* Botões de navegação estilizados */
 .slider-btn {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    width: 45px;
-    height: 45px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
     background-color: #ffffff;
-    color: var(--cor-secundaria);
-    border: 2px solid var(--cor-destaque);
+    color: #333;
+    border: none;
     font-size: 1.2rem;
     font-weight: bold;
     cursor: pointer;
-    z-index: 20;
+    z-index: 50;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    transition: all 0.3s ease;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    transition: transform 0.2s ease, background-color 0.2s ease;
 }
 
 .slider-btn:hover {
-    background-color: var(--cor-destaque);
-    color: var(--cor-secundaria);
+    transform: translateY(-50%) scale(1.1);
+    background-color: #f0f0f0;
 }
 
-.slider-btn.prev {
-    left: 0;
-}
-
-.slider-btn.next {
-    right: 0;
-}
-
-/* Imagem do projeto */
-.projeto-img {
-    width: 100%;
-    height: 300px;
-    object-fit: cover; /* Faz a imagem preencher o espaço sem distorcer */
-    display: block;
-    transition: transform 0.5s ease; /* Animação suave para o zoom */
-}
-
-/* Legenda (Oculta por padrão no computador) */
-.projeto-legenda {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    padding: 2rem 1rem 1rem 1rem;
-    /* Gradiente escuro para dar leitura ao texto */
-    background: linear-gradient(to top, rgba(17, 17, 17, 0.9), transparent);
-    color: var(--cor-primaria); /* Texto branco */
-    font-weight: 600;
-    font-size: 1.2rem;
-    text-align: center;
-    border-bottom: 4px solid var(--cor-destaque); /* Detalhe amarelo na base */
-    
-    /* Prepara o efeito de aparecer de baixo para cima */
-    transform: translateY(100%);
-    transition: transform 0.4s ease;
-}
-
-/* Efeito Hover: O que acontece ao passar o mouse */
-.projeto-item:hover .projeto-img {
-    transform: scale(1.08); /* Dá um zoom suave na imagem */
-}
-
-.projeto-item:hover .projeto-legenda {
-    transform: translateY(0); /* Faz a legenda subir e aparecer */
-}
-
+.slider-btn.prev { left: 20px; }
+.slider-btn.next { right: 20px; }
 
 /* ==========================================
    13. SEÇÃO DE DIFERENCIAIS
