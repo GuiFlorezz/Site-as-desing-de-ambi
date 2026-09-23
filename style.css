@@ -363,7 +363,7 @@ ul {
 /* Envolvente do slider para posicionar as setas */
 .projetos-slider-container {
     position: relative;
-    padding: 0 1rem;
+    padding: 0 2.5rem;
 }
 
 .galeria-grid {
@@ -398,13 +398,13 @@ ul {
     width: 45px;
     height: 45px;
     border-radius: 50%;
-    background-color: var(--cor-primaria);
+    background-color: #ffffff;
     color: var(--cor-secundaria);
     border: 2px solid var(--cor-destaque);
     font-size: 1.2rem;
     font-weight: bold;
     cursor: pointer;
-    z-index: 10;
+    z-index: 20;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -418,11 +418,11 @@ ul {
 }
 
 .slider-btn.prev {
-    left: -20px;
+    left: 0;
 }
 
 .slider-btn.next {
-    right: -20px;
+    right: 0;
 }
 
 /* Imagem do projeto */
@@ -795,6 +795,7 @@ ul {
     .nav-principal.menu-aberto {
         right: 0; /* Desliza o menu para dentro da tela */
     }
+    
 }
 
 /* ==========================================
@@ -896,7 +897,7 @@ ul {
     }
 
     .projeto-item {
-        flex: 0 0 calc(50% - 0.75rem); /* Mostra 2 itens no tablet */
+        flex: 0 0 calc(50% - 0.75rem);
     }
 }
 
@@ -948,17 +949,16 @@ ul {
         margin: 0.5rem auto 0 auto;
     }
 
-    .projeto-item {
-        flex: 0 0 85%; /* Mostra 1 item quase inteiro no celular (indicando que há mais à direita) */
-    }
-    
-    /* Esconde as setas no celular para usar o gesto com o dedo */
-    .slider-btn {
-        display: none; 
-    }
-    
     .projetos-slider-container {
-        padding: 0;
+        padding: 0; /* No celular usa a tela toda */
+    }
+
+    .projeto-item {
+        flex: 0 0 85%;
+    }
+    
+    .slider-btn {
+        display: none; /* No celular desliza com o dedo */
     }
 }
 /* ==========================================
