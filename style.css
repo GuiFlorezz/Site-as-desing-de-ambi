@@ -680,6 +680,75 @@ ul {
 }
 
 /* ==========================================
+   20. MENU MOBILE (BOTÃO HAMBÚRGUER)
+   ========================================== */
+.menu-hamburguer {
+    display: none; /* Escondido no computador */
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 2000; /* Fica acima da subjanela */
+}
+
+.menu-hamburguer .linha {
+    width: 100%;
+    height: 3px;
+    background-color: var(--cor-secundaria); /* Linhas pretas */
+    border-radius: 5px;
+    transition: all 0.3s ease; /* Para a futura animação de X */
+}
+
+/* ==========================================
+   21. SUBJANELA DO MENU (MOBILE)
+   ========================================== */
+@media (max-width: 900px) {
+    /* Mostra o botão hambúrguer */
+    .menu-hamburguer {
+        display: flex; 
+    }
+
+    /* Esconde o botão de orçamento no celular para limpar o header */
+    .header-cta {
+        display: none; 
+    }
+
+    /* Transforma o menu em uma tela inteira (subjanela) */
+    .nav-principal {
+        position: fixed;
+        top: 0;
+        right: -100%; /* Esconde o menu fora da tela à direita */
+        width: 100%;
+        height: 100vh;
+        background-color: var(--cor-primaria);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: right 0.4s ease-in-out; /* Animação suave para deslizar */
+        z-index: 1500;
+    }
+
+    /* A lista de links passa a ser vertical e centralizada */
+    .nav-lista {
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+    }
+
+    .nav-link {
+        font-size: 1.5rem; /* Textos maiores no celular para facilitar o clique */
+    }
+
+    /* CLASSE QUE O JS VAI USAR PARA ABRIR O MENU */
+    .nav-principal.menu-aberto {
+        right: 0; /* Desliza o menu para dentro da tela */
+    }
+}
+
+/* ==========================================
    19. RESPONSIVIDADE DO HEADER (Mobile)
    ========================================== */
 @media (max-width: 992px) {
