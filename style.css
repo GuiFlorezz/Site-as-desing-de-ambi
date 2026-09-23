@@ -749,6 +749,26 @@ ul {
 }
 
 /* ==========================================
+   22. ANIMAÇÃO DO BOTÃO HAMBÚRGUER (Transforma em X)
+   ========================================== */
+/* Quando o menu estiver aberto (classe 'ativo' adicionada pelo JS) */
+
+/* Linha de cima desce e gira 45 graus */
+.menu-hamburguer.ativo .linha:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+}
+
+/* Linha do meio desaparece */
+.menu-hamburguer.ativo .linha:nth-child(2) {
+    opacity: 0; 
+}
+
+/* Linha de baixo sobe e gira -45 graus */
+.menu-hamburguer.ativo .linha:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+}
+
+/* ==========================================
    19. RESPONSIVIDADE DO HEADER (Mobile)
    ========================================== */
 @media (max-width: 992px) {
