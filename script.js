@@ -51,3 +51,29 @@ linksMenu.forEach(link => {
         document.body.style.overflow = 'auto'; // Destrava a rolagem
     });
 });
+/* ==========================================
+   3. ANIMAÇÕES DE ENTRADA (SCROLL REVEAL)
+   ========================================== */
+// Seleciona todos os elementos que têm a classe 'animar-surgir'
+const elementosAnimar = document.querySelectorAll('.animar-surgir');
+
+// Cria o observador
+const observadorScroll = new IntersectionObserver((entradas) => {
+    entradas.forEach((entrada) => {
+        // Se 15% do elemento apareceu na tela...
+        if (entrada.isIntersecting) {
+            // Adiciona a classe que faz a animação acontecer
+            entrada.target.classList.add('mostrar');
+            
+            // Faz a animação acontecer apenas uma vez (para de observar)
+            observadorScroll.unobserve(entrada.target);
+        }
+    });
+}, {
+    threshold: 0.15 // Dispara quando 15% do elemento estiver visível
+});
+
+// Pede para o observador vigiar cada elemento selecionado
+elementosAnimar.forEach((elemento) => {
+    observadorScroll.observe(elemento);
+});
