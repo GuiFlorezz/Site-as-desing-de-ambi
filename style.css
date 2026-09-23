@@ -360,20 +360,69 @@ ul {
     margin: 0 auto;
 }
 
+/* Envolvente do slider para posicionar as setas */
+.projetos-slider-container {
+    position: relative;
+    padding: 0 1rem;
+}
+
 .galeria-grid {
-    display: grid;
-    /* Cria colunas automáticas de no mínimo 320px */
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    display: flex;
     gap: 1.5rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory; /* Efeito de encaixe suave */
+    scroll-behavior: smooth;
+    padding: 1rem 0;
+    
+    /* Oculta as barras de rolagem nativas */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE e Edge */
 }
 
 /* Container individual de cada foto */
 .projeto-item {
+    flex: 0 0 calc(33.333% - 1rem); /* Mostra 3 itens por vez no PC */
+    min-width: 280px;
+    scroll-snap-align: start; /* Onde o item "trava" ao rolar */
     position: relative;
-    border-radius: 8px; /* Bordas arredondadas elegantes */
-    overflow: hidden; /* Esconde o que vazar (necessário para o efeito de zoom) */
-    cursor: pointer;
+    border-radius: 8px;
+    overflow: hidden;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+/* Botões do Slider */
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background-color: var(--cor-primaria);
+    color: var(--cor-secundaria);
+    border: 2px solid var(--cor-destaque);
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+}
+
+.slider-btn:hover {
+    background-color: var(--cor-destaque);
+    color: var(--cor-secundaria);
+}
+
+.slider-btn.prev {
+    left: -20px;
+}
+
+.slider-btn.next {
+    right: -20px;
 }
 
 /* Imagem do projeto */
@@ -845,6 +894,10 @@ ul {
     .footer-coluna:first-child .footer-titulo-links::after {
         margin: 0.5rem auto 0 auto;
     }
+
+    .projeto-item {
+        flex: 0 0 calc(50% - 0.75rem); /* Mostra 2 itens no tablet */
+    }
 }
 
 @media (max-width: 600px) {
@@ -893,6 +946,19 @@ ul {
     
     .footer-coluna:first-child .footer-titulo-links::after {
         margin: 0.5rem auto 0 auto;
+    }
+
+    .projeto-item {
+        flex: 0 0 85%; /* Mostra 1 item quase inteiro no celular (indicando que há mais à direita) */
+    }
+    
+    /* Esconde as setas no celular para usar o gesto com o dedo */
+    .slider-btn {
+        display: none; 
+    }
+    
+    .projetos-slider-container {
+        padding: 0;
     }
 }
 /* ==========================================
@@ -954,5 +1020,8 @@ ul {
     
     .footer-coluna:first-child .footer-titulo-links::after {
         margin: 0.5rem auto 0 auto;
+    }
+    .projeto-item {
+        flex: 0 0 calc(50% - 0.75rem); /* Mostra 2 itens no tablet */
     }
 }
