@@ -78,72 +78,98 @@ elementosAnimar.forEach((elemento) => {
     observadorScroll.observe(elemento);
 });
 /* ==========================================
-   4. CARROSSEL INFINITO DE PROJETOS
+   4. CARROSSEL 3D COVERFLOW (INFINITO)
    ========================================== */
-const galeria = document.querySelector('.galeria-grid');
+const items = document.querySelectorAll('.galeria-coverflow .projeto-item');
 const btnPrev = document.getElementById('btn-prev-projeto');
 const btnNext = document.getElementById('btn-next-projeto');
 
-if (galeria && btnPrev && btnNext) {
-    const items = Array.from(galeria.children);
-    
-    // 1. Clona os itens para frente e para trás [Bloco 1][Bloco 2 (Original)][Bloco 3]
-    items.forEach(item => galeria.appendChild(item.cloneNode(true)));
-    items.slice().reverse().forEach(item => galeria.insertBefore(item.cloneNode(true), galeria.firstChild));
+if (items.length > 0) {
+    let currentIndex = 0;
 
-    // Calcula a largura de 1 bloco completo de cards
-    const getSetWidth = () => galeria.scrollWidth / 3;
+    function updateCoverflow() {
+        const total = items.length;
 
-    // Posiciona a rolagem no Bloco 2 (centro) ao carregar
-    const initPosition = () => {
-        galeria.scrollLeft = getSetWidth();
-    };
-    initPosition();
-    window.addEventListener('resize', initPosition);
+        items.forEach((item, index) => {
+            // Calcula a menor distância entre o card atual e o card central
+            let diff = index - currentIndex;
 
-    // Calcula a distância do salto a cada clique (largura do card + gap)
-    const getScrollAmount = () => {
-        const item = galeria.querySelector('.projeto-item');
-        if (!item) return 300;
-        const gap = parseInt(window.getComputedStyle(galeria).gap) || 24;
-        return item.offsetWidth + gap;
-    };
+            // Ajuste matemático para rotação infinita contínua
+            if (diff > total / 2) diff -= total;
+            if (diff < -total / 2) diff += total;
 
-    // 2. Botão PRÓXIMO (Direita)
-    btnNext.addEventListener('click', () => {
-        const setWidth = getSetWidth();
-        const step = getScrollAmount();
+            const absDiff = Math.abs(diff);
 
-        // Se estiver chegando no Bloco 3, reposiciona instantaneamente para o Bloco 2 antes de rolar
-        if (galeria.scrollLeft >= (setWidth * 2) - galeria.clientWidth - 5) {
-            galeria.scrollLeft -= setWidth;
-        }
+            if (absDiff > 2) {
+                // Esconde os cards que estão muito longe no fundo
+                item.style.opacity = '0';
+                item.style.pointerEvents = 'none';
+                item.style.transform = `translateX(${diff * 200}px) scale(0.5) rotateY(0deg)`;
+                item.style.zIndex = '0';
+            } else {
+                // Renderiza as 5 cartas visíveis com efeito 3D
+                item.style.pointerEvents = 'auto';
+                
+                // Posições baseadas no screenshot
+                const translateX = diff * 170; // Espaçamento lateral entre cards
+                const rotateY = diff * -30;    // Angulação 3D das laterais
+                const scale = 1 - (absDiff * 0.15); // Redução gradual de tamanho
+                const zIndex = 10 - absDiff;   // Sobreposição correta das camadas
+                
+                // Esferas de opacidade e brilho para dar profundidade
+                const opacity = diff === 0 ? 1 : (absDiff === 1 ? 0.85 : 0.5);
+                const filter = diff === 0 ? 'brightness(1)' : 'brightness(0.75)';
 
-        galeria.scrollBy({ left: step, behavior: 'smooth' });
+                item.style.opacity = opacity;
+                item.style.filter = filter;
+                item.style.zIndex = zIndex;
+                item.style.transform = `translateX(${translateX}px) scale(${scale}) rotateY(${rotateY}deg)`;
+            }
+        });
+    }
+
+    // Navegar para o próximo (Direita)
+    btnNext?.addEventListener('click', () => {
+        currentIndex = (currentIndex + 1) % items.length;
+        updateCoverflow();
     });
 
-    // 3. Botão ANTERIOR (Esquerda)
-    btnPrev.addEventListener('click', () => {
-        const setWidth = getSetWidth();
-        const step = getScrollAmount();
-
-        // Se estiver no início do Bloco 2, reposiciona instantaneamente para o Bloco 3 antes de rolar
-        if (galeria.scrollLeft <= setWidth + 5) {
-            galeria.scrollLeft += setWidth;
-        }
-
-        galeria.scrollBy({ left: -step, behavior: 'smooth' });
+    // Navegar para o anterior (Esquerda)
+    btnPrev?.addEventListener('click', () => {
+        currentIndex = (currentIndex - 1 + items.length) % items.length;
+        updateCoverflow();
     });
 
-    // 4. Suporte para arrasto de dedo no Celular (Mobile)
-    galeria.addEventListener('scroll', () => {
-        const setWidth = getSetWidth();
-        if (setWidth === 0) return;
+    // Permitir clicar diretamente em qualquer card lateral para centralizá-lo
+    items.forEach((item, index) => {
+        item.addEventListener('click', () => {
+            currentIndex = index;
+            updateCoverflow();
+        });
+    });
 
-        if (galeria.scrollLeft >= setWidth * 2) {
-            galeria.scrollLeft -= setWidth;
-        } else if (galeria.scrollLeft <= 5) {
-            galeria.scrollLeft += setWidth;
+    // Suporte para deslizar o dedo na tela (Touch Swipe no Mobile)
+    let startX = 0;
+    const galeriaContainer = document.querySelector('.galeria-coverflow');
+
+    galeriaContainer?.addEventListener('touchstart', (e) => {
+        startX = e.touches[0].clientX;
+    }, { passive: true });
+
+    galeriaContainer?.addEventListener('touchend', (e) => {
+        const endX = e.changedTouches[0].clientX;
+        const diffX = startX - endX;
+
+        if (Math.abs(diffX) > 40) {
+            if (diffX > 0) {
+                currentIndex = (currentIndex + 1) % items.length; // Swipe Esquerda
+            } else {
+                currentIndex = (currentIndex - 1 + items.length) % items.length; // Swipe Direita
+            }
+            updateCoverflow();
         }
     });
+
+    // Inicializa o carrossel posicionado na primeira carta
+    updateCoverflow();
 }
