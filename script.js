@@ -85,14 +85,15 @@ const btnPrev = document.getElementById('btn-prev-projeto');
 const btnNext = document.getElementById('btn-next-projeto');
 
 if (galeria && btnPrev && btnNext) {
-    // 1. Duplica os cards no DOM para criar o efeito contínuo infinito
+    
+    // 1. Duplica os cards para criar o contêiner infinito
     const cardsOriginais = Array.from(galeria.children);
     cardsOriginais.forEach(card => {
         const clone = card.cloneNode(true);
         galeria.appendChild(clone);
     });
 
-    // Função para calcular a largura exata de avanço (card + gap)
+    // Função para calcular a largura exata de deslocamento (card + espaçamento)
     const getScrollAmount = () => {
         const item = galeria.querySelector('.projeto-item');
         if (!item) return 300;
@@ -100,31 +101,49 @@ if (galeria && btnPrev && btnNext) {
         return item.offsetWidth + gap;
     };
 
-    // 2. Clique no botão PRÓXIMO (Direita)
+    // 2. Clique no botão PRÓXIMO (Avançar para a Direita)
     btnNext.addEventListener('click', () => {
-        const metadeLargura = galeria.scrollWidth / 2;
-        if (galeria.scrollLeft >= metadeLargura - 10) {
-            galeria.scrollLeft -= metadeLargura;
+        const metade = galeria.scrollWidth / 2;
+        
+        // Se estiver no fim do primeiro bloco de cards, pula instantaneamente pro início equivalente
+        if (galeria.scrollLeft >= metade - 10) {
+            galeria.scrollLeft -= metade;
         }
+        
         galeria.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
     });
 
-    // 3. Clique no botão ANTERIOR (Esquerda)
+    // 3. Clique no botão ANTERIOR (Voltar para a Esquerda)
     btnPrev.addEventListener('click', () => {
-        const metadeLargura = galeria.scrollWidth / 2;
+        const metade = galeria.scrollWidth / 2;
+
+        // Se estiver no início, pula instantaneamente para o bloco da metade antes de rolar
         if (galeria.scrollLeft <= 10) {
-            galeria.scrollLeft += metadeLargura;
+            galeria.scrollLeft += metade;
         }
+
         galeria.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' });
     });
 
-    // 4. Loop infinito para rolagem manual via toque (Mobile)
+    // 4. Loop Infinito fluído no Celular (Swipe / Arraste de dedo)
+    let isAdjusting = false;
+
     galeria.addEventListener('scroll', () => {
-        const metadeLargura = galeria.scrollWidth / 2;
-        if (galeria.scrollLeft >= metadeLargura) {
-            galeria.scrollLeft -= metadeLargura;
-        } else if (galeria.scrollLeft <= 0) {
-            galeria.scrollLeft += metadeLargura;
+        if (isAdjusting) return;
+
+        const metade = galeria.scrollWidth / 2;
+
+        // Quando o usuário arrasta com o dedo até o fim da primeira cópia
+        if (galeria.scrollLeft >= metade) {
+            isAdjusting = true;
+            galeria.scrollLeft -= metade;
+            requestAnimationFrame(() => { isAdjusting = false; });
+        } 
+        // Quando o usuário arrasta para a esquerda além do início
+        else if (galeria.scrollLeft <= 0) {
+            isAdjusting = true;
+            galeria.scrollLeft += metade;
+            requestAnimationFrame(() => { isAdjusting = false; });
         }
     });
 }
