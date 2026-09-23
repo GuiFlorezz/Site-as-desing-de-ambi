@@ -78,21 +78,60 @@ elementosAnimar.forEach((elemento) => {
     observadorScroll.observe(elemento);
 });
 /* ==========================================
-   4. CARROSSEL DE PROJETOS
+   4. CARROSSEL INFINITO DE PROJETOS
    ========================================== */
 const galeria = document.querySelector('.galeria-grid');
 const btnPrev = document.getElementById('btn-prev-projeto');
 const btnNext = document.getElementById('btn-next-projeto');
 
 if (galeria && btnPrev && btnNext) {
-    btnNext.addEventListener('click', () => {
-        // Calcula a largura de um card + o gap entre eles
-        const cardWidth = galeria.querySelector('.projeto-item').offsetWidth + 24;
-        galeria.scrollBy({ left: cardWidth, behavior: 'smooth' });
+    
+    // 1. Duplica os cards para criar o efeito de loop infinito sem fim
+    const cardsOriginais = Array.from(galeria.children);
+    cardsOriginais.forEach(card => {
+        const clone = card.cloneNode(true);
+        galeria.appendChild(clone); // Duplica no final
     });
 
+    // Função para calcular a largura de deslocamento de 1 card
+    const getCardWidth = () => {
+        const item = galeria.querySelector('.projeto-item');
+        return item ? item.offsetWidth + 24 : 300; // 24px é o gap
+    };
+
+    // 2. Clique no botão PRÓXIMO (Direita)
+    btnNext.addEventListener('click', () => {
+        const maxScroll = galeria.scrollWidth / 2;
+        
+        // Se estiver chegando na metade (fim dos cards originais), reseta para o início suavemente
+        if (galeria.scrollLeft >= maxScroll - 10) {
+            galeria.scrollBehavior = 'auto';
+            galeria.scrollLeft = 0;
+        }
+        
+        galeria.scrollBy({ left: getCardWidth(), behavior: 'smooth' });
+    });
+
+    // 3. Clique no botão ANTERIOR (Esquerda)
     btnPrev.addEventListener('click', () => {
-        const cardWidth = galeria.querySelector('.projeto-item').offsetWidth + 24;
-        galeria.scrollBy({ left: -cardWidth, behavior: 'smooth' });
+        const maxScroll = galeria.scrollWidth / 2;
+
+        // Se estiver no começo e clicar para voltar, pula para a metade instantaneamente
+        if (galeria.scrollLeft <= 10) {
+            galeria.scrollBehavior = 'auto';
+            galeria.scrollLeft = maxScroll;
+        }
+
+        galeria.scrollBy({ left: -getCardWidth(), behavior: 'smooth' });
+    });
+
+    // 4. Loop Infinito no celular (Swipe de dedo)
+    galeria.addEventListener('scroll', () => {
+        const maxScroll = galeria.scrollWidth / 2;
+        
+        // Quando o usuário arrasta com o dedo até o fim da primeira cópia, reseta sem que ele perceba
+        if (galeria.scrollLeft >= maxScroll) {
+            galeria.scrollLeft = galeria.scrollLeft - maxScroll;
+        }
     });
 }
