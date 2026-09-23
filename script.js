@@ -85,15 +85,23 @@ const btnPrev = document.getElementById('btn-prev-projeto');
 const btnNext = document.getElementById('btn-next-projeto');
 
 if (galeria && btnPrev && btnNext) {
+    const items = Array.from(galeria.children);
     
-    // 1. Duplica os cards para criar o contêiner infinito
-    const cardsOriginais = Array.from(galeria.children);
-    cardsOriginais.forEach(card => {
-        const clone = card.cloneNode(true);
-        galeria.appendChild(clone);
-    });
+    // 1. Clona os itens para frente e para trás [Bloco 1][Bloco 2 (Original)][Bloco 3]
+    items.forEach(item => galeria.appendChild(item.cloneNode(true)));
+    items.slice().reverse().forEach(item => galeria.insertBefore(item.cloneNode(true), galeria.firstChild));
 
-    // Função para calcular a largura exata de deslocamento (card + espaçamento)
+    // Calcula a largura de 1 bloco completo de cards
+    const getSetWidth = () => galeria.scrollWidth / 3;
+
+    // Posiciona a rolagem no Bloco 2 (centro) ao carregar
+    const initPosition = () => {
+        galeria.scrollLeft = getSetWidth();
+    };
+    initPosition();
+    window.addEventListener('resize', initPosition);
+
+    // Calcula a distância do salto a cada clique (largura do card + gap)
     const getScrollAmount = () => {
         const item = galeria.querySelector('.projeto-item');
         if (!item) return 300;
@@ -101,49 +109,41 @@ if (galeria && btnPrev && btnNext) {
         return item.offsetWidth + gap;
     };
 
-    // 2. Clique no botão PRÓXIMO (Avançar para a Direita)
+    // 2. Botão PRÓXIMO (Direita)
     btnNext.addEventListener('click', () => {
-        const metade = galeria.scrollWidth / 2;
-        
-        // Se estiver no fim do primeiro bloco de cards, pula instantaneamente pro início equivalente
-        if (galeria.scrollLeft >= metade - 10) {
-            galeria.scrollLeft -= metade;
+        const setWidth = getSetWidth();
+        const step = getScrollAmount();
+
+        // Se estiver chegando no Bloco 3, reposiciona instantaneamente para o Bloco 2 antes de rolar
+        if (galeria.scrollLeft >= (setWidth * 2) - galeria.clientWidth - 5) {
+            galeria.scrollLeft -= setWidth;
         }
-        
-        galeria.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
+
+        galeria.scrollBy({ left: step, behavior: 'smooth' });
     });
 
-    // 3. Clique no botão ANTERIOR (Voltar para a Esquerda)
+    // 3. Botão ANTERIOR (Esquerda)
     btnPrev.addEventListener('click', () => {
-        const metade = galeria.scrollWidth / 2;
+        const setWidth = getSetWidth();
+        const step = getScrollAmount();
 
-        // Se estiver no início, pula instantaneamente para o bloco da metade antes de rolar
-        if (galeria.scrollLeft <= 10) {
-            galeria.scrollLeft += metade;
+        // Se estiver no início do Bloco 2, reposiciona instantaneamente para o Bloco 3 antes de rolar
+        if (galeria.scrollLeft <= setWidth + 5) {
+            galeria.scrollLeft += setWidth;
         }
 
-        galeria.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' });
+        galeria.scrollBy({ left: -step, behavior: 'smooth' });
     });
 
-    // 4. Loop Infinito fluído no Celular (Swipe / Arraste de dedo)
-    let isAdjusting = false;
-
+    // 4. Suporte para arrasto de dedo no Celular (Mobile)
     galeria.addEventListener('scroll', () => {
-        if (isAdjusting) return;
+        const setWidth = getSetWidth();
+        if (setWidth === 0) return;
 
-        const metade = galeria.scrollWidth / 2;
-
-        // Quando o usuário arrasta com o dedo até o fim da primeira cópia
-        if (galeria.scrollLeft >= metade) {
-            isAdjusting = true;
-            galeria.scrollLeft -= metade;
-            requestAnimationFrame(() => { isAdjusting = false; });
-        } 
-        // Quando o usuário arrasta para a esquerda além do início
-        else if (galeria.scrollLeft <= 0) {
-            isAdjusting = true;
-            galeria.scrollLeft += metade;
-            requestAnimationFrame(() => { isAdjusting = false; });
+        if (galeria.scrollLeft >= setWidth * 2) {
+            galeria.scrollLeft -= setWidth;
+        } else if (galeria.scrollLeft <= 5) {
+            galeria.scrollLeft += setWidth;
         }
     });
 }
