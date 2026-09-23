@@ -117,7 +117,7 @@
 <!-- ==========================================
         SEÇÃO DE SERVIÇOS
 ========================================== -->
-             <section id="servicos" class="servicos-section animar-surgir">
+        <section id="servicos" class="servicos-section animar-surgir">
             <div class="container-servicos">
                 <header class="secao-cabecalho">
                     <h2 class="secao-titulo">Nossos Serviços</h2>
@@ -153,60 +153,77 @@
         </section>
 
 <!-- ==========================================
-        SEÇÃO DE PROJETOS (GALERIA/SLIDE)
+        SEÇÃO DE PROJETOS (3D COVERFLOW)
 ========================================== -->
-        <section id="projetos" class="projetos-section animar-surgir">
+        <section id="projetos" class="projetos-section">
             <div class="container-projetos">
 
                 <header class="secao-cabecalho">
                     <h2 class="secao-titulo">Nossos Projetos</h2>
-                    <p class="secao-subtitulo">Projetos personalizados para transformar seus ambientes.</p>
+                    <p class="secao-subtitulo">Explore nossos ambientes em destaque.</p>
                 </header>
 
-                <div class="projetos-slider-container animar-surgir">
+                <div class="coverflow-wrapper">
+                    <!-- Botão Esquerda -->
+                    <button id="btn-prev-projeto" class="slider-btn prev" aria-label="Anterior">&#10094;</button>
 
-                    <!-- BOTÃO ESQUERDA (ADICIONADO) -->
-                    <button id="btn-prev-projeto" class="slider-btn prev" aria-label="Projeto anterior">
-                        &#10094;
-                    </button>
+                    <!-- Container 3D das cartas -->
+                    <div class="galeria-coverflow">
+                        
+                        <div class="projeto-item">
+                            <div class="card-tag">
+                                <span class="tag-logo">es.</span>
+                                <span class="tag-text">Cozinha Planejada</span>
+                            </div>
+                            <img src="assets/img/projeto-01.jpg" alt="Cozinha Planejada" class="projeto-img">
+                        </div>
 
-                    <div class="galeria-grid">
-                        <figure class="projeto-item">
-                            <img src="assets/img/projeto-01.jpg" alt="Projeto de cozinha planejada sob medida com acabamento moderno" class="projeto-img">
-                            <figcaption class="projeto-legenda">Cozinha Planejada</figcaption>
-                        </figure>
+                        <div class="projeto-item">
+                            <div class="card-tag">
+                                <span class="tag-logo">es.</span>
+                                <span class="tag-text">Sala de Estar</span>
+                            </div>
+                            <img src="assets/img/projeto-02.jpg" alt="Sala de Estar" class="projeto-img">
+                        </div>
 
-                        <figure class="projeto-item">
-                            <img src="assets/img/projeto-02.jpg" alt="Projeto de sala de estar com painel de TV e rack sob medida" class="projeto-img">
-                            <figcaption class="projeto-legenda">Sala de Estar</figcaption>
-                        </figure>
+                        <div class="projeto-item">
+                            <div class="card-tag">
+                                <span class="tag-logo">es.</span>
+                                <span class="tag-text">Dormitório Casal</span>
+                            </div>
+                            <img src="assets/img/projeto-03.jpg" alt="Dormitório Casal" class="projeto-img">
+                        </div>
 
-                        <figure class="projeto-item">
-                            <img src="assets/img/projeto-03.jpg" alt="Dormitório planejado com armários embutidos e cabeceira" class="projeto-img">
-                            <figcaption class="projeto-legenda">Dormitório Casal</figcaption>
-                        </figure>
+                        <div class="projeto-item">
+                            <div class="card-tag">
+                                <span class="tag-logo">es.</span>
+                                <span class="tag-text">Banheiro Sob Medida</span>
+                            </div>
+                            <img src="assets/img/projeto-04.jpg" alt="Banheiro Sob Medida" class="projeto-img">
+                        </div>
 
-                        <figure class="projeto-item">
-                            <img src="assets/img/projeto-04.jpg" alt="Móveis planejados para banheiro com nichos e espelheira" class="projeto-img">
-                            <figcaption class="projeto-legenda">Banheiro Sob Medida</figcaption>
-                        </figure>
+                        <div class="projeto-item">
+                            <div class="card-tag">
+                                <span class="tag-logo">es.</span>
+                                <span class="tag-text">Home Office</span>
+                            </div>
+                            <img src="assets/img/projeto-05.jpg" alt="Home Office" class="projeto-img">
+                        </div>
 
-                        <figure class="projeto-item">
-                            <img src="assets/img/projeto-05.jpg" alt="Escritório home office com bancada e prateleiras personalizadas" class="projeto-img">
-                            <figcaption class="projeto-legenda">Home Office</figcaption>
-                        </figure>
+                        <div class="projeto-item">
+                            <div class="card-tag">
+                                <span class="tag-logo">es.</span>
+                                <span class="tag-text">Área Gourmet</span>
+                            </div>
+                            <img src="assets/img/projeto-06.jpg" alt="Área Gourmet" class="projeto-img">
+                        </div>
 
-                        <figure class="projeto-item">
-                            <img src="assets/img/projeto-06.jpg" alt="Área gourmet planejada com churrasqueira e armários funcionais" class="projeto-img">
-                            <figcaption class="projeto-legenda">Área Gourmet</figcaption>
-                        </figure>
                     </div>
 
-                    <!-- BOTÃO DIREITA -->
-                    <button id="btn-next-projeto" class="slider-btn next" aria-label="Próximo projeto">
-                        &#10095;
-                    </button>
+                    <!-- Botão Direita -->
+                    <button id="btn-next-projeto" class="slider-btn next" aria-label="Próximo">&#10095;</button>
                 </div>
+
             </div>
         </section>
 <!-- ==========================================
