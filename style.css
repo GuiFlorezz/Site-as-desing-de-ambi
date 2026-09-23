@@ -370,7 +370,6 @@ ul {
     display: flex;
     gap: 1.5rem;
     overflow-x: auto;
-    scroll-snap-type: x mandatory; /* Efeito de encaixe suave */
     scroll-behavior: smooth;
     padding: 1rem 0;
     
@@ -379,11 +378,14 @@ ul {
     -ms-overflow-style: none; /* IE e Edge */
 }
 
+.galeria-grid::-webkit-scrollbar {
+    display: none;
+}
+
 /* Container individual de cada foto */
 .projeto-item {
     flex: 0 0 calc(33.333% - 1rem); /* Mostra 3 itens por vez no PC */
     min-width: 280px;
-    scroll-snap-align: start; /* Onde o item "trava" ao rolar */
     position: relative;
     border-radius: 8px;
     overflow: hidden;
