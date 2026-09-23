@@ -173,3 +173,28 @@ if (items.length > 0) {
     // Inicializa o carrossel posicionado na primeira carta
     updateCoverflow();
 }
+/* ==========================================
+   5. ACORDION DA SEÇÃO FAQ
+   ========================================== */
+const faqItems = document.querySelectorAll('.faq-item');
+
+faqItems.forEach(item => {
+    const perguntaBtn = item.querySelector('.faq-pergunta');
+    const resposta = item.querySelector('.faq-resposta');
+
+    perguntaBtn.addEventListener('click', () => {
+        const estaAtivo = item.classList.contains('ativo');
+
+        // Opcional: Fecha os outros itens ao abrir um novo
+        faqItems.forEach(outroItem => {
+            outroItem.classList.remove('ativo');
+            outroItem.querySelector('.faq-resposta').style.maxHeight = null;
+        });
+
+        // Alterna o item clicado
+        if (!estaAtivo) {
+            item.classList.add('ativo');
+            resposta.style.maxHeight = resposta.scrollHeight + 'px';
+        }
+    });
+});
