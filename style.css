@@ -840,7 +840,7 @@ ul {
    BOTÃO FLUTUANTE DO WHATSAPP
    ========================================== */
 .whatsapp-btn {
-    position: fixed;
+    position: fixed !important;
     bottom: 25px;
     right: 25px;
     width: 60px;
