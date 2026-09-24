@@ -1,3 +1,18 @@
+/* RESET GLOBAL - COLE NO TOPO DO ARQUIVO */
+html, body {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+    position: relative;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box !important;
+}
+
+
 /* ==========================================
    1. VARIÁVEIS GERAIS E PALETA DE CORES
    ========================================== */
@@ -1299,6 +1314,12 @@ html, body {
 /* 3. Ajustes de contenção para dispositivos móveis */
 @media (max-width: 768px) {
     
+    html, body {
+        width: 100vw; /* Garante cobertura total em navegadores mobile */
+        max-width: 100%;
+        overflow-x: hidden !important;
+    }
+
     /* Quebra automática de textos longos ou títulos grandes */
     h1, h2, h3, h4, h5, h6, p, a, span, button {
         max-width: 100% !important;
@@ -1325,6 +1346,18 @@ html, body {
         left: 0 !important;
         right: 0 !important;
         margin: 0 auto !important;
+    }
+    /* Força todas as seções e blocos a ocuparem exatamente 100% da largura */
+    section, 
+    footer, 
+    .cta-section, 
+    .container, 
+    .hero-section {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        box-sizing: border-box !important;
     }
 
     /* Mídias contidas no limite do celular */
