@@ -1,44 +1,33 @@
-/* RESET GLOBAL - COLE NO TOPO DO ARQUIVO */
-html, body {
-    margin: 0 !important;
-    padding: 0 !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    overflow-x: hidden !important;
-    position: relative;
-}
-
+/* ==========================================
+   1. RESET GLOBAL & VARIÁVEIS
+   ========================================== */
 *, *::before, *::after {
-    box-sizing: border-box !important;
-}
-
-
-/* ==========================================
-   1. VARIÁVEIS GERAIS E PALETA DE CORES
-   ========================================== */
-:root {
-    --cor-primaria: #ffffff;      /* Branco - Predominante */
-    --cor-secundaria: #111111;    /* Preto - Textos, títulos e contraste */
-    --cor-destaque: #D4AF37;      /* Amarelo Sofisticado (tom puxado pro ouro/mostarda) */
-    --cor-texto: #444444;         /* Cinza escuro para textos de parágrafos (mais suave que o preto puro) */
-    --cor-fundo: #F8F9FA;         /* Fundo levemente cinza para algumas seções futuras */
-    
-    --fonte-principal: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-}
-
-/* ==========================================
-   2. RESET BÁSICO (Para limpar o padrão do navegador)
-   ========================================== */
-* {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden !important;
+    position: relative;
+    background-color: var(--cor-primaria);
+}
+
+:root {
+    --cor-primaria: #ffffff;      
+    --cor-secundaria: #111111;    
+    --cor-destaque: #D4AF37;      
+    --cor-texto: #444444;         
+    --cor-fundo: #F8F9FA;         
+    
+    --fonte-principal: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
 body {
     font-family: var(--fonte-principal);
     color: var(--cor-texto);
-    background-color: var(--cor-primaria);
     -webkit-font-smoothing: antialiased;
 }
 
@@ -48,6 +37,18 @@ a {
 
 ul {
     list-style: none;
+}
+
+/* Quebra automática de textos para não vazar a tela */
+h1, h2, h3, h4, h5, h6, p, a, span, button {
+    max-width: 100%;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+img, video, iframe {
+    max-width: 100%;
+    height: auto;
 }
 
 /* ==========================================
@@ -64,7 +65,6 @@ ul {
     box-shadow: 0 2px 20px rgba(0, 0, 0, 0.06);
     z-index: 1000;
     
-    /* Animação fluida e suave para virar ilha */
     transition: top 0.4s ease, 
                 width 0.4s ease, 
                 border-radius 0.4s ease, 
@@ -83,7 +83,6 @@ ul {
     transition: padding 0.4s ease;
 }
 
-/* Logo */
 .logo-texto {
     font-size: 1.35rem;
     font-weight: 700;
@@ -93,7 +92,6 @@ ul {
     transition: font-size 0.4s ease;
 }
 
-/* Links do Menu */
 .nav-lista {
     display: flex;
     gap: 2rem;
@@ -110,7 +108,6 @@ ul {
     transition: color 0.3s ease;
 }
 
-/* Linha dourada elegante no hover dos links */
 .nav-link::after {
     content: '';
     position: absolute;
@@ -130,7 +127,6 @@ ul {
     width: 100%;
 }
 
-/* Botão do Header */
 .btn-destaque {
     background-color: var(--cor-destaque, #D4AF37);
     color: #111111;
@@ -154,7 +150,7 @@ ul {
    ========================================== */
 .hero-section {
     position: relative;
-    min-height: 85vh; /* Altura do hero */
+    min-height: 85vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -162,29 +158,26 @@ ul {
     padding: 4rem 1.5rem;
 }
 
-/* O vídeo ocupa todo o espaço do container */
 .hero-video {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Mantém a proporção cobrindo toda a tela */
+    object-fit: cover;
     z-index: 1;
 }
 
-/* Camada escura por cima do vídeo */
 .hero-overlay {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.55); /* Escurece 55% para dar leitura */
+    background: rgba(0, 0, 0, 0.55);
     z-index: 2;
 }
 
-/* Conteúdo fica acima do vídeo e do overlay */
 .container-hero {
     position: relative;
     z-index: 3;
@@ -193,7 +186,6 @@ ul {
     text-align: center;
 }
 
-/* Textos em Branco com leve sombra */
 .hero-titulo {
     font-size: 2.8rem;
     font-weight: 700;
@@ -212,10 +204,9 @@ ul {
     text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
 }
 
-/* Estilo dos Botões da Hero Section */
 .hero-botoes .btn-primario {
-    background-color: #caa152; /* Cor dourada/amarelada combinando com o botão do menu */
-    color: #111111 !important;  /* Texto escuro com alto contraste */
+    background-color: #caa152;
+    color: #111111 !important;
     font-weight: 600;
     padding: 12px 28px;
     border-radius: 4px;
@@ -243,10 +234,9 @@ ul {
 }
 
 /* ==========================================
-   5. ESTILOS GERAIS DE SEÇÃO (Títulos)
+   5. ESTILOS GERAIS DE SEÇÃO
    ========================================== */
-
-.secao-cabecalho{
+.secao-cabecalho {
     text-align: center;
     margin-bottom: 3.5rem;
 }
@@ -259,7 +249,6 @@ ul {
     position: relative;
 }
 
-/* Detalhe visual: Uma linha amarela discreta embaixo do título principal */
 .secao-titulo::after {
     content: '';
     display: block;
@@ -278,12 +267,12 @@ ul {
    6. SEÇÃO SOBRE
    ========================================== */
 .sobre-section {
-    background-color: var(--cor-fundo); /* Fundo levemente cinza para destacar */
+    background-color: var(--cor-fundo);
     padding: 6rem 2rem;
 }
 
 .container-sobre {
-    max-width: 800px; /* Largura menor para o texto não ficar tão longo e difícil de ler */
+    max-width: 800px;
     margin: 0 auto;
     text-align: center;
 }
@@ -303,7 +292,7 @@ ul {
    7. SEÇÃO DE SERVIÇOS
    ========================================== */
 .servicos-section {
-    background-color: var(--cor-primaria); /* Volta para o fundo branco */
+    background-color: var(--cor-primaria);
     padding: 6rem 2rem;
 }
 
@@ -314,12 +303,10 @@ ul {
 
 .servicos-grid {
     display: grid;
-    /* Isso cria colunas automáticas e responsivas! */
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 2rem;
 }
 
-/* Estilo individual de cada card de serviço */
 .servico-card {
     background-color: var(--cor-primaria);
     border: 1px solid #EBEBEB;
@@ -329,18 +316,16 @@ ul {
     transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
-/* Efeito Hover: O card "levanta" e ganha uma borda amarela ao passar o mouse */
 .servico-card:hover {
     transform: translateY(-8px);
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
     border-color: var(--cor-destaque);
 }
 
-/* Container do ícone */
 .servico-icone {
     width: 65px;
     height: 65px;
-    background-color: rgba(212, 175, 55, 0.1); /* Fundo amarelo bem clarinho e transparente */
+    background-color: rgba(212, 175, 55, 0.1);
     border-radius: 50%;
     margin: 0 auto 1.5rem auto;
     display: flex;
@@ -348,9 +333,8 @@ ul {
     justify-content: center;
 }
 
-/* Como ainda não temos as imagens/svgs dos ícones, vamos usar um CSS falso para simular um ícone dentro do círculo */
 .servico-icone::after {
-    content: '✦'; /* Símbolo genérico para preencher o espaço */
+    content: '✦';
     color: var(--cor-destaque);
     font-size: 1.8rem;
 }
@@ -367,7 +351,6 @@ ul {
     line-height: 1.6;
     color: var(--cor-texto);
 }
-
 
 /* ==========================================
    11. SEÇÃO DE PROJETOS (3D COVERFLOW)
@@ -395,7 +378,7 @@ ul {
     display: flex;
     align-items: center;
     justify-content: center;
-    perspective: 1200px; /* Profundidade 3D */
+    perspective: 1200px;
     transform-style: preserve-3d;
 }
 
@@ -421,7 +404,6 @@ ul {
     display: block;
 }
 
-/* Tag de perfil estilo Instagram sobre a foto */
 .card-tag {
     position: absolute;
     top: 15px;
@@ -456,7 +438,6 @@ ul {
     color: #333;
 }
 
-/* Botões de navegação estilizados */
 .slider-btn {
     position: absolute;
     top: 50%;
@@ -490,56 +471,49 @@ ul {
    13. SEÇÃO DE DIFERENCIAIS
    ========================================== */
 .diferenciais-section {
-    background-color: var(--cor-primaria); /* Volta para o fundo branco */
+    background-color: var(--cor-primaria);
     padding: 6rem 2rem;
 }
 
 .container-diferenciais {
-    max-width: 1000px; /* Um pouco mais estreito para os itens ficarem mais próximos */
+    max-width: 1000px;
     margin: 0 auto;
 }
 
 .diferenciais-lista {
     display: grid;
-    /* Cria 2 ou 3 colunas dependendo do tamanho da tela */
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.5rem 2rem; /* Espaçamento entre as linhas e colunas */
+    gap: 1.5rem 2rem;
 }
 
-/* Estilo individual de cada item de diferencial */
 .diferencial-item {
     display: flex;
-    align-items: center; /* Alinha o ícone e o texto ao centro */
-    gap: 1.2rem; /* Espaço entre o ícone e o texto */
-    
-    background-color: var(--cor-fundo); /* Fundo cinza clarinho do card */
+    align-items: center;
+    gap: 1.2rem;
+    background-color: var(--cor-fundo);
     padding: 1.5rem;
     border-radius: 8px;
-    border-left: 4px solid var(--cor-destaque); /* Linha amarela elegante na esquerda */
-    
+    border-left: 4px solid var(--cor-destaque);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Efeito Hover: Move o item levemente para a direita e adiciona sombra */
 .diferencial-item:hover {
     transform: translateX(5px);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
 }
 
-/* Container do ícone */
 .diferencial-icone {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 35px;
     height: 35px;
-    background-color: rgba(212, 175, 55, 0.2); /* Fundo amarelo transparente */
+    background-color: rgba(212, 175, 55, 0.2);
     border-radius: 50%;
     color: var(--cor-destaque);
-    flex-shrink: 0; /* Impede que o ícone fique espremido se o texto for grande */
+    flex-shrink: 0;
 }
 
-/* Ícone falso de check (✓) enquanto não colocamos imagens/SVGs reais */
 .diferencial-icone::after {
     content: '✓';
     font-size: 1.2rem;
@@ -550,284 +524,6 @@ ul {
     font-size: 1.1rem;
     color: var(--cor-secundaria);
     font-weight: 600;
-}
-
-
-/* ==========================================
-   ESTILOS DA SEÇÃO CTA
-========================================== */
-.cta-section {
-    background-color: #111111;
-    padding: 60px 20px;
-    text-align: center;
-    border-bottom: 1px solid #222222;
-}
-
-.container-cta {
-    max-width: 700px;
-    margin: 0 auto;
-}
-
-.cta-titulo {
-    color: #ffffff;
-    font-size: 1.8rem;
-    font-weight: 700;
-    margin-bottom: 16px;
-    line-height: 1.3;
-}
-
-.cta-descricao {
-    color: #cccccc;
-    font-size: 0.95rem;
-    line-height: 1.6;
-    margin-bottom: 30px;
-}
-
-/* Botão Destacado e Legível */
-.btn-cta {
-    display: inline-block;
-    width: 100%;
-    max-width: 380px;
-    background-color: #caa152; /* Dourado / Amarelo da marca */
-    color: #000000 !important;
-    font-weight: 700;
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    padding: 16px 24px;
-    border-radius: 6px;
-    text-decoration: none;
-    box-shadow: 0 4px 15px rgba(202, 161, 82, 0.2);
-    transition: all 0.3s ease;
-    box-sizing: border-box;
-}
-
-.btn-cta:hover {
-    background-color: #b08a3e;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(202, 161, 82, 0.3);
-}
-
-
-/* ==========================================
-   ESTILOS DO RODAPÉ (MOBILE FIRST / CENTRALIZADO)
-========================================== */
-.footer {
-    background-color: #0a0a0a;
-    color: #ffffff;
-    padding: 50px 20px 20px 20px;
-    text-align: center;
-}
-
-.container-footer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 35px;
-    max-width: 1100px;
-    margin: 0 auto;
-}
-
-/* Bloco da Marca */
-.footer-logo {
-    font-size: 1.3rem;
-    letter-spacing: 1px;
-    margin-bottom: 6px;
-    font-weight: 800;
-}
-
-.footer-subtext {
-    color: #caa152;
-    font-size: 0.85rem;
-    margin-bottom: 4px;
-}
-
-.footer-cidade {
-    color: #888888;
-    font-size: 0.8rem;
-}
-
-/* Títulos das colunas */
-.footer-titulo-menu {
-    font-size: 1rem;
-    margin-bottom: 14px;
-    position: relative;
-    display: inline-block;
-}
-
-/* Linha decorativa centralizada abaixo dos títulos */
-.footer-titulo-menu::after {
-    content: '';
-    display: block;
-    width: 30px;
-    height: 2px;
-    background-color: #caa152;
-    margin: 6px auto 0 auto;
-}
-
-/* Links */
-.footer-menu {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.footer-menu li {
-    margin-bottom: 8px;
-}
-
-.footer-menu a {
-    color: #aaaaaa;
-    text-decoration: none;
-    font-size: 0.9rem;
-    transition: color 0.2s ease;
-}
-
-.footer-menu a:hover {
-    color: #ffffff;
-}
-
-/* Direitos autorais no fim */
-.footer-copy {
-    margin-top: 40px;
-    padding-top: 20px;
-    border-top: 1px solid #1a1a1a;
-    color: #666666;
-    font-size: 0.75rem;
-}
-
-
-/* ==========================================
-   19. EFEITO MODO ILHA (AO ROLAR)
-   ========================================== */
-.header-ilha {
-    top: 15px;
-    width: 900px;
-    max-width: 90%;
-    border-radius: 50px;
-    background-color: rgba(255, 255, 255, 0.92);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
-}
-
-.header-ilha .container-header {
-    padding: 0.6rem 2rem;
-}
-
-.header-ilha .logo-texto {
-    font-size: 1.25rem;
-}
-
-.header-ilha .btn-destaque {
-    padding: 0.6rem 1.4rem;
-    font-size: 0.85rem;
-}
-/* ==========================================
-   20. MENU MOBILE (BOTÃO HAMBÚRGUER)
-   ========================================== */
-.menu-hamburguer {
-    display: none; /* Escondido no computador */
-    flex-direction: column;
-    justify-content: space-between;
-    width: 30px;
-    height: 21px;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    z-index: 2000; /* Fica acima da subjanela */
-}
-
-.menu-hamburguer .linha {
-    width: 100%;
-    height: 3px;
-    background-color: var(--cor-secundaria); /* Linhas pretas */
-    border-radius: 5px;
-    transition: all 0.3s ease; /* Para a futura animação de X */
-}
-
-/* ==========================================
-   21. SUBJANELA DO MENU (MOBILE)
-   ========================================== */
-@media (max-width: 900px) {
-    /* Mostra o botão hambúrguer */
-    .menu-hamburguer {
-        display: flex; 
-    }
-
-    /* Esconde o botão de orçamento no celular para limpar o header */
-    .header-cta {
-        display: none; 
-    }
-
-    /* Transforma o menu em uma tela inteira (subjanela) */
-    .nav-principal {
-        position: fixed;
-        top: 0;
-        right: -100%; /* Esconde o menu fora da tela à direita */
-        width: 100%;
-        height: 100vh;
-        background-color: var(--cor-primaria);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: right 0.4s ease-in-out; /* Animação suave para deslizar */
-        z-index: 1500;
-    }
-
-    /* A lista de links passa a ser vertical e centralizada */
-    .nav-lista {
-        flex-direction: column;
-        align-items: center;
-        gap: 2rem;
-    }
-
-    .nav-link {
-        font-size: 1.5rem; /* Textos maiores no celular para facilitar o clique */
-    }
-
-    /* CLASSE QUE O JS VAI USAR PARA ABRIR O MENU */
-    .nav-principal.menu-aberto {
-        right: 0; /* Desliza o menu para dentro da tela */
-    }
-    
-}
-
-/* ==========================================
-   22. ANIMAÇÃO DO BOTÃO HAMBÚRGUER (Transforma em X)
-   ========================================== */
-/* Quando o menu estiver aberto (classe 'ativo' adicionada pelo JS) */
-
-/* Linha de cima desce e gira 45 graus */
-.menu-hamburguer.ativo .linha:nth-child(1) {
-    transform: translateY(9px) rotate(45deg);
-}
-
-/* Linha do meio desaparece */
-.menu-hamburguer.ativo .linha:nth-child(2) {
-    opacity: 0; 
-}
-
-/* Linha de baixo sobe e gira -45 graus */
-.menu-hamburguer.ativo .linha:nth-child(3) {
-    transform: translateY(-9px) rotate(-45deg);
-}
-
-/* ==========================================
-   23. ANIMAÇÕES DE ENTRADA (SCROLL REVEAL)
-   ========================================== */
-/* Estado inicial: invisível e empurrado 40px para baixo */
-.animar-surgir {
-    opacity: 0;
-    transform: translateY(40px);
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-    will-change: opacity, transform; /* Otimização de GPU */
-}
-
-/* Estado final (adicionado pelo JS): visível e no lugar original */
-.animar-surgir.mostrar {
-    opacity: 1;
-    transform: translateY(0);
 }
 
 /* ==========================================
@@ -893,7 +589,7 @@ ul {
 }
 
 .faq-item.ativo .faq-icone {
-    transform: rotate(45deg); /* Transforma o + em x ao abrir */
+    transform: rotate(45deg);
 }
 
 .faq-resposta {
@@ -910,7 +606,260 @@ ul {
     padding-bottom: 1.25rem;
 }
 
+/* ==========================================
+   ESTILOS DA SEÇÃO CTA
+========================================== */
+.cta-section {
+    background-color: #111111;
+    padding: 60px 20px;
+    text-align: center;
+    border-bottom: 1px solid #222222;
+}
 
+.container-cta {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.cta-titulo {
+    color: #ffffff;
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+    line-height: 1.3;
+}
+
+.cta-descricao {
+    color: #cccccc;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.btn-cta {
+    display: inline-block;
+    width: 100%;
+    max-width: 380px;
+    background-color: #caa152;
+    color: #000000 !important;
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 16px 24px;
+    border-radius: 6px;
+    text-decoration: none;
+    box-shadow: 0 4px 15px rgba(202, 161, 82, 0.2);
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+.btn-cta:hover {
+    background-color: #b08a3e;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(202, 161, 82, 0.3);
+}
+
+/* ==========================================
+   ESTILOS DO RODAPÉ
+========================================== */
+.footer {
+    background-color: #0a0a0a;
+    color: #ffffff;
+    padding: 50px 20px 20px 20px;
+    text-align: center;
+}
+
+.container-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 35px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.footer-logo {
+    font-size: 1.3rem;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+    font-weight: 800;
+}
+
+.footer-subtext {
+    color: #caa152;
+    font-size: 0.85rem;
+    margin-bottom: 4px;
+}
+
+.footer-cidade {
+    color: #888888;
+    font-size: 0.8rem;
+}
+
+.footer-titulo-menu {
+    font-size: 1rem;
+    margin-bottom: 14px;
+    position: relative;
+    display: inline-block;
+}
+
+.footer-titulo-menu::after {
+    content: '';
+    display: block;
+    width: 30px;
+    height: 2px;
+    background-color: #caa152;
+    margin: 6px auto 0 auto;
+}
+
+.footer-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-menu li {
+    margin-bottom: 8px;
+}
+
+.footer-menu a {
+    color: #aaaaaa;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.2s ease;
+}
+
+.footer-menu a:hover {
+    color: #ffffff;
+}
+
+.footer-copy {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid #1a1a1a;
+    color: #666666;
+    font-size: 0.75rem;
+}
+
+/* ==========================================
+   19. EFEITO MODO ILHA (AO ROLAR)
+   ========================================== */
+.header-ilha {
+    top: 15px;
+    width: 900px;
+    max-width: 90%;
+    border-radius: 50px;
+    background-color: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+}
+
+.header-ilha .container-header {
+    padding: 0.6rem 2rem;
+}
+
+.header-ilha .logo-texto {
+    font-size: 1.25rem;
+}
+
+.header-ilha .btn-destaque {
+    padding: 0.6rem 1.4rem;
+    font-size: 0.85rem;
+}
+
+/* ==========================================
+   20. MENU MOBILE (SEM CAUSAR VAZAMENTO)
+   ========================================== */
+.menu-hamburguer {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 2000;
+}
+
+.menu-hamburguer .linha {
+    width: 100%;
+    height: 3px;
+    background-color: var(--cor-secundaria);
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.menu-hamburguer.ativo .linha:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+}
+
+.menu-hamburguer.ativo .linha:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-hamburguer.ativo .linha:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+}
+
+@media (max-width: 900px) {
+    .menu-hamburguer {
+        display: flex;
+    }
+
+    .header-cta {
+        display: none;
+    }
+
+    /* Solução do vazamento: Esconde via GPU sem expandir a tela */
+    .nav-principal {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100vh;
+        background-color: var(--cor-primaria);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transform: translateX(100%);
+        visibility: hidden;
+        transition: transform 0.4s ease-in-out, visibility 0.4s ease-in-out;
+        z-index: 1500;
+    }
+
+    .nav-lista {
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+    }
+
+    .nav-link {
+        font-size: 1.5rem;
+    }
+
+    .nav-principal.menu-aberto {
+        transform: translateX(0);
+        visibility: visible;
+    }
+}
+
+/* ==========================================
+   23. ANIMAÇÕES DE ENTRADA
+   ========================================== */
+.animar-surgir {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    will-change: opacity, transform;
+}
+
+.animar-surgir.mostrar {
+    opacity: 1;
+    transform: translateY(0);
+}
 
 /* ==========================================
    BOTÃO FLUTUANTE DO WHATSAPP
@@ -943,20 +892,15 @@ ul {
     height: 35px;
 }
 
-/* Animação de pulso contínuo */
 @keyframes whatsapp-pulse {
-    0% {
-        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
-    }
-    70% {
-        box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
-    }
-    100% {
-        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
-    }
+    0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+    70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
 }
 
-/* Ajuste para ecrãs móveis */
+/* ==========================================
+   RESPONSIVIDADE MOBILE (TRAVAS ANTI-OVERFLOW)
+   ========================================== */
 @media (max-width: 768px) {
     .whatsapp-btn {
         bottom: 20px;
@@ -969,143 +913,10 @@ ul {
         width: 30px;
         height: 30px;
     }
-}
 
-/* ==========================================
-   19. RESPONSIVIDADE DO HEADER (Mobile)
-   ========================================== */
-@media (max-width: 992px) {
-    .container-hero {
-        flex-direction: column; /* Empilha texto em cima e imagem embaixo */
-        text-align: center; /* Centraliza o texto */
-        gap: 3rem;
-        padding-top: 3rem;
-    }
-
-    .hero-titulo {
-        font-size: 2.5rem;
-    }
-
-    .hero-botoes {
-        justify-content: center; /* Centraliza os botões */
-    }
-
-    .hero-imagem-container {
-        justify-content: center; /* Centraliza a imagem */
-    }
-    .diferenciais-section {
-        padding: 4rem 1.5rem;
-    }
-
-    .cta-section {
-        padding: 4.5rem 1.5rem;
-    }
-
-    .cta-titulo {
-        font-size: 2.2rem;
-    }
-
-    .cta-texto {
-        font-size: 1.05rem;
-    }
-    
-    .btn-grande {
-        display: block; /* Força o botão a aceitar largura 100% */
-        width: 100%; /* No celular, o botão ocupa toda a largura da tela */
-        padding: 1rem;
-    }
-
-    .footer-principal {
-        padding: 3rem 1.5rem 1.5rem 1.5rem;
-    }
-
-    .footer-grid {
-        gap: 2rem;
-    }
-
-    /* Centraliza o texto da marca no celular para ficar mais harmônico */
-    .footer-coluna:first-child {
-        text-align: center;
-    }
-    
-    .footer-coluna:first-child .footer-titulo-links::after {
-        margin: 0.5rem auto 0 auto;
-    }
-
-    .projeto-item {
-        flex: 0 0 calc(50% - 0.75rem);
-    }
-}
-
-@media (max-width: 600px) {
-    .hero-botoes {
-        flex-direction: column; /* Empilha os botões no celular */
-        gap: 1rem;
-    }
-    
-    .hero-botoes .btn {
-        width: 100%; /* Botões ocupam 100% da tela no celular */
-    }
-    .diferenciais-section {
-        padding: 4rem 1.5rem;
-    }
-
-    .cta-section {
-        padding: 4.5rem 1.5rem;
-    }
-
-    .cta-titulo {
-        font-size: 2.2rem;
-    }
-
-    .cta-texto {
-        font-size: 1.05rem;
-    }
-    
-    .btn-grande {
-        display: block; /* Força o botão a aceitar largura 100% */
-        width: 100%; /* No celular, o botão ocupa toda a largura da tela */
-        padding: 1rem;
-    }
-
-    .footer-principal {
-        padding: 3rem 1.5rem 1.5rem 1.5rem;
-    }
-
-    .footer-grid {
-        gap: 2rem;
-    }
-
-    /* Centraliza o texto da marca no celular para ficar mais harmônico */
-    .footer-coluna:first-child {
-        text-align: center;
-    }
-    
-    .footer-coluna:first-child .footer-titulo-links::after {
-        margin: 0.5rem auto 0 auto;
-    }
-
-    .projetos-slider-container {
-        padding: 0; /* No celular usa a tela toda */
-    }
-
-    .projeto-item {
-        flex: 0 0 85%;
-    }
-    
-    .slider-btn {
-        display: none; /* No celular desliza com o dedo */
-    }
-}
-/* ==========================================
-   . RESPONSIVIDADE (Mobile - Serviços e Sobre)
-   ========================================== */
-@media (max-width: 768px) {
-
-    /* Espaçamento interno da seção Hero */
     .hero-section {
         padding: 80px 20px 60px 20px;
-        min-height: 85vh; /* Garante boa altura sem cortar na tela */
+        min-height: 85vh;
         display: flex;
         align-items: center;
     }
@@ -1115,31 +926,27 @@ ul {
         padding: 0;
     }
 
-    /* Título com escala adequada e respiro */
     .hero-titulo {
-        font-size: 1.75rem; /* 28px */
+        font-size: 1.75rem;
         line-height: 1.25;
         margin-bottom: 14px;
         font-weight: 700;
     }
 
-    /* Descrição levemente menor para facilitar leitura */
     .hero-descricao {
-        font-size: 0.95rem; /* 15px */
+        font-size: 0.95rem;
         line-height: 1.5;
         margin-bottom: 28px;
         color: rgba(255, 255, 255, 0.9);
     }
 
-    /* Container dos botões com espaçamento entre eles */
     .hero-botoes {
         display: flex;
         flex-direction: column;
-        gap: 12px; /* Garante o respiro vertical entre os botões */
+        gap: 12px;
         width: 100%;
     }
 
-    /* Ajuste dos botões no toque (área de clique) */
     .hero-botoes .btn {
         width: 100%;
         padding: 14px 20px;
@@ -1151,115 +958,87 @@ ul {
         box-sizing: border-box;
     }
 
-    /* Botão secundário com fundo semi-transparente para dar contraste */
     .hero-botoes .btn-secundario {
         background-color: rgba(0, 0, 0, 0.3);
         border: 1px solid rgba(255, 255, 255, 0.5);
     }
     
     .sobre-section,
-    .servicos-section {
-        padding: 4rem 1.5rem; /* Reduz o padding em telas menores */
-    }
-    .projetos-section {
+    .servicos-section,
+    .projetos-section,
+    .diferenciais-section {
         padding: 4rem 1.5rem;
-    }
-
-    /* Como no celular não existe "passar o mouse" (hover), 
-       deixamos a legenda sempre visível */
-    .projeto-legenda {
-        transform: translateY(0); 
     }
 
     .secao-titulo {
         font-size: 2rem;
     }
 
-    .diferenciais-section {
-        padding: 4rem 1.5rem;
+    /* COMPACTAÇÃO DA SEÇÃO CTA */
+    .cta-section {
+        padding: 3rem 1.2rem !important;
     }
 
-    /* 1. COMPACTAÇÃO DA SEÇÃO CTA */
-    .cta-section,
-    section:has(.cta-conteudo) {
-        padding: 3rem 1.2rem !important; /* Reduz o espaçamento interno */
-    }
-
-    .cta-titulo,
-    .cta-section h2 {
-        font-size: 1.6rem !important; /* Diminui o título principal */
+    .cta-titulo {
+        font-size: 1.6rem !important;
         line-height: 1.25 !important;
         margin-bottom: 1rem !important;
     }
 
-    .cta-descricao,
-    .cta-section p {
+    .cta-descricao {
         font-size: 0.92rem !important;
         line-height: 1.5 !important;
         margin-bottom: 1.5rem !important;
         padding: 0 0.5rem;
     }
 
-    /* Botão CTA mais compacto */
-    .cta-section .btn,
-    .cta-btn {
+    .btn-cta {
         display: block !important;
         width: 100% !important;
-        max-width: 320px !important; /* Limita a largura máxima no celular */
+        max-width: 320px !important;
         margin: 0 auto !important;
-        padding: 0.85rem 1rem !important; /* Reduz altura do botão */
+        padding: 0.85rem 1rem !important;
         font-size: 0.8rem !important;
-        letter-spacing: 0.5px !important;
     }
 
-    /* 2. CENTRALIZAÇÃO E ORGANIZAÇÃO DO RODAPÉ */
-    footer,
-    .rodape {
+    /* CENTRALIZAÇÃO DO RODAPÉ */
+    footer, .footer {
         text-align: center !important;
         padding: 2.5rem 1.2rem 1.5rem !important;
     }
 
-    .container-rodape,
-    .footer-grid,
-    footer .container {
+    .container-footer {
         display: flex !important;
         flex-direction: column !important;
         align-items: center !important;
         gap: 2rem !important;
     }
 
-    .footer-col,
-    .rodape-coluna,
-    footer div[class*="col"] {
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
-        text-align: center !important;
+    /* TRAVA DE LARGURA DEFINITIVA */
+    .header-principal,
+    .header-ilha {
+        width: 92% !important;
+        max-width: 92% !important;
+        left: 0 !important;
+        right: 0 !important;
+        margin: 0 auto !important;
+    }
+
+    section, 
+    footer, 
+    .cta-section, 
+    .container, 
+    .hero-section {
         width: 100% !important;
-    }
-
-    /* Ajuste para as barrinhas decorativas sob os títulos do rodapé */
-    footer h3::after,
-    footer h4::after,
-    .footer-col h3::after {
-        margin: 6px auto 0 auto !important; /* Centraliza a linha dourada sob os títulos */
-    }
-
-    footer ul {
-        padding: 0 !important;
-        list-style: none !important;
-    }
-
-    footer ul li {
-        margin-bottom: 0.6rem !important;
+        max-width: 100% !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        box-sizing: border-box !important;
     }
 }
 
-/* ==========================================
-   AJUSTE DE RODAPÉ PARA DESKTOP (Telas acima de 768px)
-========================================== */
+/* DESKTOP FOOTER */
 @media (min-width: 769px) {
-    
     .footer {
         text-align: left;
         padding: 60px 40px 30px 40px;
@@ -1273,96 +1052,16 @@ ul {
         max-width: 1200px;
     }
 
-    /* Alinhamento dos blocos em colunas */
-    .footer-brand,
-    .footer-block {
-        text-align: left;
-    }
-
-    /* Linha decorativa dos títulos alinhada à esquerda */
     .footer-titulo-menu {
         display: block;
     }
 
     .footer-titulo-menu::after {
-        margin: 6px 0 0 0; /* Move o risco amarelo para o início do texto */
+        margin: 6px 0 0 0;
     }
 
-    /* Rodapé inferior (Copyright) */
     .footer-copy {
-        text-align: center; /* Mantém apenas a linha de direitos autorais no centro */
+        text-align: center;
         margin-top: 50px;
-    }
-}
-
-/* ==========================================
-   CORREÇÃO DEFINITIVA DO SCROLL HORIZONTAL
-   ========================================== */
-
-/* 1. Trava global para não calcular padding fora da largura */
-*, *::before, *::after {
-    box-sizing: border-box !important;
-}
-
-/* 2. Bloqueia a rolagem lateral no corpo da página */
-html, body {
-    max-width: 100% !important;
-    overflow-x: hidden !important;
-    position: relative;
-}
-
-/* 3. Ajustes de contenção para dispositivos móveis */
-@media (max-width: 768px) {
-    
-    html, body {
-        width: 100vw; /* Garante cobertura total em navegadores mobile */
-        max-width: 100%;
-        overflow-x: hidden !important;
-    }
-
-    /* Quebra automática de textos longos ou títulos grandes */
-    h1, h2, h3, h4, h5, h6, p, a, span, button {
-        max-width: 100% !important;
-        word-wrap: break-word !important;
-        overflow-wrap: break-word !important;
-    }
-
-    /* Trava de largura para containers e seções */
-    .container,
-    .container-header,
-    .container-hero,
-    .container-rodape,
-    section,
-    footer {
-        max-width: 100% !important;
-        overflow-x: hidden !important;
-    }
-
-    /* Header e Modo Ilha ajustados à largura do celular */
-    .header-principal,
-    .header-ilha {
-        width: 92% !important;
-        max-width: 92% !important;
-        left: 0 !important;
-        right: 0 !important;
-        margin: 0 auto !important;
-    }
-    /* Força todas as seções e blocos a ocuparem exatamente 100% da largura */
-    section, 
-    footer, 
-    .cta-section, 
-    .container, 
-    .hero-section {
-        width: 100% !important;
-        max-width: 100% !important;
-        margin-left: 0 !important;
-        margin-right: 0 !important;
-        box-sizing: border-box !important;
-    }
-
-    /* Mídias contidas no limite do celular */
-    img, video, iframe {
-        max-width: 100% !important;
-        height: auto;
     }
 }
