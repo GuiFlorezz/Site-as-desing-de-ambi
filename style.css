@@ -36,25 +36,26 @@ ul {
 }
 
 /* ==========================================
-   3. CABEÇALHO (HEADER) - FIXO E CENTRALIZADO
+   3. CABEÇALHO (HEADER) - DESIGN & NAVEGAÇÃO
    ========================================== */
 .header-principal {
-    background-color: var(--cor-primaria);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-    position: fixed; /* Acompanha a tela durante todo o scroll */
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    margin: 0 auto; /* Centralização perfeita em qualquer resolução */
+    margin: 0 auto;
     width: 100%;
+    background-color: #ffffff;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.06);
     z-index: 1000;
     
-    /* Transição suave de tamanho e forma ao virar ilha */
+    /* Animação fluida e suave para virar ilha */
     transition: top 0.4s ease, 
                 width 0.4s ease, 
                 border-radius 0.4s ease, 
                 background-color 0.4s ease, 
-                box-shadow 0.4s ease;
+                box-shadow 0.4s ease,
+                border 0.4s ease;
 }
 
 .container-header {
@@ -67,10 +68,70 @@ ul {
     transition: padding 0.4s ease;
 }
 
-.logo-texto,
+/* Logo */
+.logo-texto {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--cor-secundaria, #111111);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: font-size 0.4s ease;
+}
+
+/* Links do Menu */
+.nav-lista {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+.nav-link {
+    color: var(--cor-secundaria, #111111);
+    font-weight: 500;
+    font-size: 0.88rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+/* Linha dourada elegante no hover dos links */
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--cor-destaque, #D4AF37);
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover {
+    color: var(--cor-destaque, #D4AF37);
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* Botão do Header */
 .btn-destaque {
-    transition: font-size 0.4s cubic-bezier(0.25, 1, 0.5, 1), 
-                padding 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    background-color: var(--cor-destaque, #D4AF37);
+    color: #111111;
+    border: 1px solid var(--cor-destaque, #D4AF37);
+    padding: 0.7rem 1.4rem;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+}
+
+.btn-destaque:hover {
+    background-color: transparent;
+    color: var(--cor-destaque, #D4AF37);
 }
 
 /* ==========================================
