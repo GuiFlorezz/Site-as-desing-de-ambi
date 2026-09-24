@@ -374,28 +374,44 @@ img, video, iframe {
 }
 
 /* ==========================================
-   6. SEÇÃO SOBRE
+   6. SEÇÃO SOBRE (COM IMAGEM DE FUNDO E MÁSCARA)
    ========================================== */
 .sobre-section {
-    background-color: var(--cor-fundo);
-    padding: 6rem 2rem;
+    position: relative;
+    padding: 7rem 2rem;
+    
+    /* Imagem de fundo com gradiente escuro por cima para legibilidade */
+    background: linear-gradient(rgba(0, 0, 0, 0.70), rgba(0, 0, 0, 0.70)), 
+                url('assets/video/img/fundo_sobre.png'); /* <- COLOQUE O CAMINHO DA SUA IMAGEM AQUI */
+    
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: scroll; /* Use 'fixed' se quiser efeito parallax no computador */
 }
 
 .container-sobre {
     max-width: 800px;
     margin: 0 auto;
     text-align: center;
+    position: relative;
+    z-index: 2;
 }
 
+/* Ajuste de cor do título para destacar no fundo escuro */
 .sobre-section .secao-titulo {
+    color: #ffffff;
     margin-bottom: 2rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
+/* Ajuste de cor dos parágrafos */
 .sobre-paragrafo {
     font-size: 1.15rem;
     line-height: 1.8;
     margin-bottom: 1.5rem;
-    color: var(--cor-texto);
+    color: #f0f0f0; /* Branco suave para não cansar a vista */
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
 }
 
 /* ==========================================
