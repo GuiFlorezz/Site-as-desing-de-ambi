@@ -137,87 +137,84 @@ ul {
    4. SEÇÃO HERO (PRINCIPAL)
    ========================================== */
 .hero-section {
-    padding: 6rem 0; /* Espaçamento generoso em cima e embaixo */
-    background-color: var(--cor-primaria);
-    overflow: hidden; /* Evita que elementos vazem para os lados */
+    position: relative;
+    min-height: 85vh; /* Altura do hero */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding: 4rem 1.5rem;
 }
 
+/* O vídeo ocupa todo o espaço do container */
+.hero-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Mantém a proporção cobrindo toda a tela */
+    z-index: 1;
+}
+
+/* Camada escura por cima do vídeo */
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.55); /* Escurece 55% para dar leitura */
+    z-index: 2;
+}
+
+/* Conteúdo fica acima do vídeo e do overlay */
 .container-hero {
-    max-width: 1200px;
+    position: relative;
+    z-index: 3;
+    max-width: 900px;
     margin: 0 auto;
-    padding: 0 2rem;
-    display: flex; /* Coloca texto e imagem lado a lado */
-    align-items: center; /* Centraliza verticalmente */
-    justify-content: space-between;
-    gap: 4rem; /* Espaço entre o texto e a imagem */
+    text-align: center;
 }
 
-/* --- Lado Esquerdo: Conteúdo --- */
-.hero-conteudo {
-    flex: 1; /* Ocupa metade do espaço disponível */
-    max-width: 600px;
-}
-
+/* Textos em Branco com leve sombra */
 .hero-titulo {
-    font-size: 3.5rem;
-    font-weight: 800;
-    color: var(--cor-secundaria);
-    line-height: 1.1;
-    margin-bottom: 1.5rem;
-    letter-spacing: -1px; /* Deixa o título mais moderno e compacto */
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.2;
+    margin-bottom: 1.2rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
 }
 
 .hero-descricao {
     font-size: 1.15rem;
-    color: var(--cor-texto);
-    line-height: 1.7;
-    margin-bottom: 2.5rem;
+    color: #f0f0f0;
+    line-height: 1.6;
+    max-width: 750px;
+    margin: 0 auto 2rem;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
 }
 
-/* --- Lado Esquerdo: Botões --- */
 .hero-botoes {
     display: flex;
-    gap: 1.5rem;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
-/* Estilo do Botão Primário (Amarelo) */
-.btn-primario {
-    background-color: var(--cor-destaque);
-    color: var(--cor-secundaria);
-    border: 2px solid var(--cor-destaque);
-}
-
-.btn-primario:hover {
-    background-color: transparent;
-    color: var(--cor-destaque);
-}
-
-/* Estilo do Botão Secundário (Contorno Preto/Cinza Escuro) */
+/* Estilo ajustado do botão secundário para fundo escuro */
 .btn-secundario {
-    background-color: transparent;
-    color: var(--cor-secundaria);
-    border: 2px solid var(--cor-secundaria);
+    background-color: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    border: 1px solid #ffffff;
+    backdrop-filter: blur(4px); /* Efeito de vidro fosco */
+    transition: all 0.3s ease;
 }
 
 .btn-secundario:hover {
-    background-color: var(--cor-secundaria);
-    color: var(--cor-primaria);
-}
-
-/* --- Lado Direito: Imagem --- */
-.hero-imagem-container {
-    flex: 1; /* Ocupa a outra metade do espaço */
-    display: flex;
-    justify-content: flex-end; /* Empurra a imagem para a direita */
-}
-
-.hero-img {
-    width: 100%;
-    max-width: 550px;
-    height: auto;
-    border-radius: 12px; /* Bordas arredondadas e elegantes */
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1); /* Sombra suave para dar profundidade */
-    object-fit: cover; /* Garante que a imagem não distorça */
+    background-color: #ffffff;
+    color: #111111;
 }
 
 /* ==========================================
@@ -1106,6 +1103,20 @@ ul {
    . RESPONSIVIDADE (Mobile - Serviços e Sobre)
    ========================================== */
 @media (max-width: 768px) {
+
+    .hero-section {
+        min-height: 75vh;
+        padding: 3rem 1rem;
+    }
+
+    .hero-titulo {
+        font-size: 2rem;
+    }
+
+    .hero-descricao {
+        font-size: 1rem;
+    }
+    
     .sobre-section,
     .servicos-section {
         padding: 4rem 1.5rem; /* Reduz o padding em telas menores */

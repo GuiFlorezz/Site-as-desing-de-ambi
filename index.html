@@ -54,29 +54,40 @@
 <!-- ==========================================
     SEÇÃO HERO (PRINCIPAL)
 ========================================== -->
-    <section id="inicio" class="hero-section">
-        <div class="container-hero">
-            <div class="hero-conteudo">
-                <h1 class="hero-titulo animar-surgir">Seu ambiente. Seu projeto. Do seu jeito.</h1>
-                <p class="hero-descricao">
-                    A AS Ambientes desenvolve projetos personalizados e soluções sob medida em marcenaria para tornar cada espaço único, unindo funcionalidade e um acabamento impecável.
-                </p>
-                
-                <div class="hero-botoes animar-surgir">
-                    <a href="[https://wa.me/5500000000000](https://wa.me/5500000000000)" class="btn btn-primario" target="_blank" rel="noopener noreferrer">
-                        Falar no WhatsApp
-                    </a>
-                    <a href="#projetos" class="btn btn-secundario">
-                        Visualizar Projetos
-                    </a>
-                </div>
-            </div>
+<!-- ==========================================
+    SEÇÃO HERO (VÍDEO DE FUNDO)
+========================================== -->
+<section id="inicio" class="hero-section">
+    
+    <!-- Vídeo de Fundo em Loop -->
+    <video class="hero-video" autoplay loop muted playsinline poster="asset/video/video_marcenaria.mp4">
+        <source src="assets/video/hero-bg.mp4" type="video/mp4">
+        Seu navegador não suporta vídeos.
+    </video>
+
+    <!-- Overlay Escuro (Garante a leitura do texto) -->
+    <div class="hero-overlay"></div>
+
+    <!-- Conteúdo em cima do vídeo -->
+    <div class="container-hero">
+        <div class="hero-conteudo">
+            <h1 class="hero-titulo animar-surgir">Seu ambiente. Seu projeto. Do seu jeito.</h1>
+            <p class="hero-descricao">
+                A AS Ambientes desenvolve projetos personalizados e soluções sob medida em marcenaria para tornar cada espaço único, unindo funcionalidade e um acabamento impecável.
+            </p>
             
-            <div class="hero-imagem-container">
-                <img src="assets/img/hero.jpg" alt="Ambiente planejado moderno e sofisticado feito sob medida" class="hero-img">
+            <div class="hero-botoes animar-surgir">
+                <a href="https://wa.me/5500000000000" class="btn btn-primario" target="_blank" rel="noopener noreferrer">
+                    Falar no WhatsApp
+                </a>
+                <a href="#projetos" class="btn btn-secundario">
+                    Visualizar Projetos
+                </a>
             </div>
         </div>
-    </section>
+    </div>
+
+</section>
 
 <!-- ==========================================
     SEÇÃO SOBRE
