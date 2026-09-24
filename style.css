@@ -196,25 +196,34 @@ ul {
     text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
 }
 
-.hero-botoes {
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
-    flex-wrap: wrap;
+/* Estilo dos Botões da Hero Section */
+.hero-botoes .btn-primario {
+    background-color: #caa152; /* Cor dourada/amarelada combinando com o botão do menu */
+    color: #111111 !important;  /* Texto escuro com alto contraste */
+    font-weight: 600;
+    padding: 12px 28px;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
 }
 
-/* Estilo ajustado do botão secundário para fundo escuro */
-.btn-secundario {
-    background-color: rgba(255, 255, 255, 0.15);
-    color: #ffffff;
+.hero-botoes .btn-primario:hover {
+    background-color: #b08a3e;
+}
+
+.hero-botoes .btn-secundario {
     border: 1px solid #ffffff;
-    backdrop-filter: blur(4px); /* Efeito de vidro fosco */
-    transition: all 0.3s ease;
+    color: #ffffff !important;
+    font-weight: 500;
+    padding: 12px 28px;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.btn-secundario:hover {
+.hero-botoes .btn-secundario:hover {
     background-color: #ffffff;
-    color: #111111;
+    color: #111111 !important;
 }
 
 /* ==========================================
