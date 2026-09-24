@@ -1164,73 +1164,79 @@ ul {
         padding: 4rem 1.5rem;
     }
 
-    .cta-section {
-        padding: 4.5rem 1.5rem;
+    /* 1. COMPACTAÇÃO DA SEÇÃO CTA */
+    .cta-section,
+    section:has(.cta-conteudo) {
+        padding: 3rem 1.2rem !important; /* Reduz o espaçamento interno */
     }
 
-    .cta-titulo {
-        font-size: 2.2rem;
+    .cta-titulo,
+    .cta-section h2 {
+        font-size: 1.6rem !important; /* Diminui o título principal */
+        line-height: 1.25 !important;
+        margin-bottom: 1rem !important;
     }
 
-    .cta-texto {
-        font-size: 1.05rem;
-    }
-    
-    .btn-grande {
-        display: block; /* Força o botão a aceitar largura 100% */
-        width: 100%; /* No celular, o botão ocupa toda a largura da tela */
-        padding: 1rem;
+    .cta-descricao,
+    .cta-section p {
+        font-size: 0.92rem !important;
+        line-height: 1.5 !important;
+        margin-bottom: 1.5rem !important;
+        padding: 0 0.5rem;
     }
 
-    .container-footer {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: flex-start;
-        text-align: left;
+    /* Botão CTA mais compacto */
+    .cta-section .btn,
+    .cta-btn {
+        display: block !important;
+        width: 100% !important;
+        max-width: 320px !important; /* Limita a largura máxima no celular */
+        margin: 0 auto !important;
+        padding: 0.85rem 1rem !important; /* Reduz altura do botão */
+        font-size: 0.8rem !important;
+        letter-spacing: 0.5px !important;
     }
 
-    .footer {
-        text-align: left;
+    /* 2. CENTRALIZAÇÃO E ORGANIZAÇÃO DO RODAPÉ */
+    footer,
+    .rodape {
+        text-align: center !important;
+        padding: 2.5rem 1.2rem 1.5rem !important;
     }
 
-    .footer-titulo-menu::after {
-        margin: 6px 0 0 0;
-    }
-    
-    .projeto-item {
-        flex: 0 0 calc(50% - 0.75rem); /* Mostra 2 itens no tablet */
-    }
-
-    .faq-section {
-        padding: 3.5rem 1rem;
+    .container-rodape,
+    .footer-grid,
+    footer .container {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 2rem !important;
     }
 
-    .faq-lista {
-        margin-top: 1.8rem;
-        gap: 0.75rem;
+    .footer-col,
+    .rodape-coluna,
+    footer div[class*="col"] {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        width: 100% !important;
     }
 
-    .faq-pergunta {
-        padding: 1rem 1.25rem;
-        font-size: 0.95rem;
-        line-height: 1.4;
-        gap: 0.75rem;
+    /* Ajuste para as barrinhas decorativas sob os títulos do rodapé */
+    footer h3::after,
+    footer h4::after,
+    .footer-col h3::after {
+        margin: 6px auto 0 auto !important; /* Centraliza a linha dourada sob os títulos */
     }
 
-    .faq-icone {
-        font-size: 1.25rem;
-        flex-shrink: 0; /* Garante que o ícone "+" não amasse se a pergunta ocupar várias linhas */
-        margin-left: 0.5rem;
+    footer ul {
+        padding: 0 !important;
+        list-style: none !important;
     }
 
-    .faq-resposta {
-        padding: 0 1.25rem;
-    }
-
-    .faq-resposta p {
-        font-size: 0.88rem;
-        line-height: 1.5;
-        padding-bottom: 1rem;
+    footer ul li {
+        margin-bottom: 0.6rem !important;
     }
 }
 
