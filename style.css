@@ -1279,3 +1279,57 @@ ul {
         margin-top: 50px;
     }
 }
+
+/* ==========================================
+   CORREÇÃO DEFINITIVA DO SCROLL HORIZONTAL
+   ========================================== */
+
+/* 1. Trava global para não calcular padding fora da largura */
+*, *::before, *::after {
+    box-sizing: border-box !important;
+}
+
+/* 2. Bloqueia a rolagem lateral no corpo da página */
+html, body {
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+    position: relative;
+}
+
+/* 3. Ajustes de contenção para dispositivos móveis */
+@media (max-width: 768px) {
+    
+    /* Quebra automática de textos longos ou títulos grandes */
+    h1, h2, h3, h4, h5, h6, p, a, span, button {
+        max-width: 100% !important;
+        word-wrap: break-word !important;
+        overflow-wrap: break-word !important;
+    }
+
+    /* Trava de largura para containers e seções */
+    .container,
+    .container-header,
+    .container-hero,
+    .container-rodape,
+    section,
+    footer {
+        max-width: 100% !important;
+        overflow-x: hidden !important;
+    }
+
+    /* Header e Modo Ilha ajustados à largura do celular */
+    .header-principal,
+    .header-ilha {
+        width: 92% !important;
+        max-width: 92% !important;
+        left: 0 !important;
+        right: 0 !important;
+        margin: 0 auto !important;
+    }
+
+    /* Mídias contidas no limite do celular */
+    img, video, iframe {
+        max-width: 100% !important;
+        height: auto;
+    }
+}
