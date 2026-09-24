@@ -415,7 +415,7 @@ img, video, iframe {
 }
 
 /* ==========================================
-   7. SEÇÃO DE SERVIÇOS
+   7. SEÇÃO DE SERVIÇOS (COM IMAGENS PADRONIZADAS)
    ========================================== */
 .servicos-section {
     background-color: var(--cor-primaria);
@@ -436,9 +436,10 @@ img, video, iframe {
 .servico-card {
     background-color: var(--cor-primaria);
     border: 1px solid #EBEBEB;
-    border-radius: 8px;
-    padding: 2.5rem 1.5rem;
-    text-align: center;
+    border-radius: 12px;
+    overflow: hidden; /* Trava a imagem dentro dos cantos arredondados */
+    display: flex;
+    flex-direction: column;
     transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
@@ -448,28 +449,37 @@ img, video, iframe {
     border-color: var(--cor-destaque);
 }
 
-.servico-icone {
-    width: 65px;
-    height: 65px;
-    background-color: rgba(212, 175, 55, 0.1);
-    border-radius: 50%;
-    margin: 0 auto 1.5rem auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+/* Área da imagem com limite de altura fixo */
+.servico-imagem {
+    width: 100%;
+    height: 180px; /* Altere este valor para aumentar/diminuir a altura das fotos */
+    overflow: hidden;
+    background-color: #f0f0f0;
 }
 
-.servico-icone::after {
-    content: '✦';
-    color: var(--cor-destaque);
-    font-size: 1.8rem;
+.servico-imagem img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Corta a foto no tamanho exato sem distorcer */
+    transition: transform 0.4s ease;
+}
+
+.servico-card:hover .servico-imagem img {
+    transform: scale(1.05); /* Efeito suave de zoom ao passar o mouse */
+}
+
+/* Área do texto dentro do card */
+.servico-conteudo {
+    padding: 1.8rem 1.5rem;
+    text-align: center;
+    flex-grow: 1;
 }
 
 .servico-titulo {
     font-size: 1.25rem;
     font-weight: 600;
     color: var(--cor-secundaria);
-    margin-bottom: 1rem;
+    margin-bottom: 0.8rem;
 }
 
 .servico-descricao {
