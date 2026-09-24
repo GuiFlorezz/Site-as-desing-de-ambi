@@ -4,7 +4,6 @@
 const header = document.getElementById('cabecalho');
 
 window.addEventListener('scroll', () => {
-    // Ativa o modo ilha após 80px de rolagem para uma transição natural
     if (window.scrollY > 80) {
         header.classList.add('header-ilha');
     } else {
