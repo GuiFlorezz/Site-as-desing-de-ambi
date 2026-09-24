@@ -1,13 +1,4 @@
 /* ==========================================
-   CORREÇÃO GLOBAL DE OVERFLOW (Tira a barra branca lateral)
-========================================== */
-html, body {
-    overflow-x: hidden;
-    width: 100%;
-}
-
-
-/* ==========================================
    1. VARIÁVEIS GERAIS E PALETA DE CORES
    ========================================== */
 :root {
@@ -45,15 +36,25 @@ ul {
 }
 
 /* ==========================================
-   3. CABEÇALHO (HEADER)
+   3. CABEÇALHO (HEADER) - ESTRUTURA BASE
    ========================================== */
 .header-principal {
     background-color: var(--cor-primaria);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); /* Sombra suave para separar do resto do site */
-    position: sticky; /* Mantém o cabeçalho no topo ao rolar a página */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    position: fixed; /* Garante que acompanhe o scroll sempre */
     top: 0;
-    z-index: 1000;
+    left: 50%;
+    transform: translateX(-50%); /* Centralização fluida via GPU */
     width: 100%;
+    z-index: 1000;
+    
+    /* Transições unificadas e ultra suaves */
+    transition: top 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+                width 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+                border-radius 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+                background-color 0.4s ease,
+                box-shadow 0.4s ease;
+    will-change: transform, top, width;
 }
 
 .container-header {
@@ -63,83 +64,13 @@ ul {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    transition: padding 0.4s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-/* Logo */
-.logo-link {
-    display: flex;
-    align-items: center;
-}
-
-.logo-texto {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--cor-secundaria);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-/* Navegaçao */
-.nav-link{
-    color: var(--cor-secundaria);
-    font-weight: 500;
-    font-size: 0.95rem;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    position: relative;
-    transition: color 0.3s ease;
-}
-
-/* Efeito elegante de linha amarela ao passar o mouse */
-.nav-link::after {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background-color: var(--cor-destaque);
-    transition: width 0.3s ease;
-}
-
-.nav-link:hover {
-    color: var(--cor-destaque);
-}
-
-.nav-link:hover::after {
-    width: 100%;
-}
-
-.nav-lista {
-    display: flex;
-    gap: 2rem;
-    align-items: center;
-}
-
-/* Botões (Classe global que usaremos no site todo) */
-.btn {
-    display: inline-block;
-    padding: 0.8rem 1.8rem;
-    border-radius: 4px;
-    font-weight: 600;
-    font-size: 0.95rem;
-    text-align: center;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-/* Botão de Destaque do Header */
+.logo-texto,
 .btn-destaque {
-    background-color: var(--cor-destaque);
-    color: var(--cor-secundaria); /* Texto preto no fundo amarelo */
-    border: 2px solid var(--cor-destaque);
-}
-
-.btn-destaque:hover {
-    background-color: transparent;
-    color: var(--cor-destaque);
+    transition: font-size 0.4s cubic-bezier(0.25, 1, 0.5, 1), 
+                padding 0.4s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 /* ==========================================
@@ -691,55 +622,24 @@ ul {
 
 
 /* ==========================================
-   19. EFEITO MODO ILHA (SCROLL SUPER SUAVE)
+   19. EFEITO MODO ILHA (ATIVADO NO SCROLL)
    ========================================== */
-.header-principal {
-    position: sticky;
-    top: 0;
-    margin: 0 auto; /* Mantém centralizado sempre */
-    width: 100%;
-    
-    /* 1. MÁGICA DA SUAVIDADE: Animamos apenas propriedades específicas */
-    /* Usamos ease-in-out para acelerar e desacelerar suavemente */
-    transition: width 0.5s ease-in-out,
-                top 0.5s ease-in-out,
-                border-radius 0.5s ease-in-out,
-                background-color 0.4s ease,
-                box-shadow 0.4s ease;
-                
-    /* 2. FORÇA ACELERAÇÃO DE HARDWARE (GPU) */
-    will-change: width, top, border-radius, background-color; 
-}
-
-/* Transição do container interno */
-.container-header {
-    transition: padding 0.5s ease-in-out;
-    will-change: padding;
-}
-
-/* Transição dos textos e botões */
-.logo-texto,
-.btn-destaque {
-    transition: font-size 0.5s ease-in-out, padding 0.5s ease-in-out;
-}
-
-/* --- O MODO ILHA ATIVADO --- */
 .header-ilha {
-    top: 15px; /* Desce suavemente do topo */
-    width: 900px; /* Usa um tamanho fixo ao invés de porcentagem (evita travamentos) */
-    max-width: 90%; /* Garante que não quebre em tablets */
+    top: 15px;
+    width: 900px;
+    max-width: 92%;
     border-radius: 50px;
-    background-color: rgba(255, 255, 255, 0.90);
+    background-color: rgba(255, 255, 255, 0.92);
     backdrop-filter: blur(12px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
 }
 
-/* Encolhe a altura */
+/* Compacta a altura e os elementos suavemente ao virar ilha */
 .header-ilha .container-header {
-    padding: 0.5rem 2rem; 
+    padding: 0.6rem 2rem; 
 }
 
-/* Reduz os elementos internos suavemente */
 .header-ilha .logo-texto {
     font-size: 1.25rem;
 }
