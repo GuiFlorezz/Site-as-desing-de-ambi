@@ -36,25 +36,25 @@ ul {
 }
 
 /* ==========================================
-   3. CABEÇALHO (HEADER) - ESTRUTURA BASE
+   3. CABEÇALHO (HEADER) - FIXO E CENTRALIZADO
    ========================================== */
 .header-principal {
     background-color: var(--cor-primaria);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-    position: fixed; /* Garante que acompanhe o scroll sempre */
+    position: fixed; /* Acompanha a tela durante todo o scroll */
     top: 0;
-    left: 50%;
-    transform: translateX(-50%); /* Centralização fluida via GPU */
+    left: 0;
+    right: 0;
+    margin: 0 auto; /* Centralização perfeita em qualquer resolução */
     width: 100%;
     z-index: 1000;
     
-    /* Transições unificadas e ultra suaves */
-    transition: top 0.4s cubic-bezier(0.25, 1, 0.5, 1),
-                width 0.4s cubic-bezier(0.25, 1, 0.5, 1),
-                border-radius 0.4s cubic-bezier(0.25, 1, 0.5, 1),
-                background-color 0.4s ease,
+    /* Transição suave de tamanho e forma ao virar ilha */
+    transition: top 0.4s ease, 
+                width 0.4s ease, 
+                border-radius 0.4s ease, 
+                background-color 0.4s ease, 
                 box-shadow 0.4s ease;
-    will-change: transform, top, width;
 }
 
 .container-header {
@@ -64,7 +64,7 @@ ul {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    transition: padding 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    transition: padding 0.4s ease;
 }
 
 .logo-texto,
@@ -622,12 +622,12 @@ ul {
 
 
 /* ==========================================
-   19. EFEITO MODO ILHA (ATIVADO NO SCROLL)
+   19. EFEITO MODO ILHA (AO ROLAR)
    ========================================== */
 .header-ilha {
     top: 15px;
     width: 900px;
-    max-width: 92%;
+    max-width: 90%;
     border-radius: 50px;
     background-color: rgba(255, 255, 255, 0.92);
     backdrop-filter: blur(12px);
@@ -635,9 +635,8 @@ ul {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
 }
 
-/* Compacta a altura e os elementos suavemente ao virar ilha */
 .header-ilha .container-header {
-    padding: 0.6rem 2rem; 
+    padding: 0.6rem 2rem;
 }
 
 .header-ilha .logo-texto {
@@ -648,7 +647,6 @@ ul {
     padding: 0.6rem 1.4rem;
     font-size: 0.85rem;
 }
-
 /* ==========================================
    20. MENU MOBILE (BOTÃO HAMBÚRGUER)
    ========================================== */
