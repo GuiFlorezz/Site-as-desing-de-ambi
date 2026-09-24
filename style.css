@@ -415,7 +415,7 @@ img, video, iframe {
 }
 
 /* ==========================================
-   7. SEÇÃO DE SERVIÇOS (DESIGN ORIGINAL COM ÍCONE CIRCULAR)
+   7. SEÇÃO DE SERVIÇOS (IMAGEM NO TOPO DO CARD)
    ========================================== */
 .servicos-section {
     background-color: var(--cor-primaria);
@@ -437,8 +437,10 @@ img, video, iframe {
     background-color: #ffffff;
     border: 1px solid #EBEBEB;
     border-radius: 12px;
-    padding: 2.5rem 1.5rem;
-    text-align: center;
+    overflow: hidden; /* Corta a imagem no formato arredondado das bordas superiores */
+    padding: 0;       /* Garante que a imagem encoste nas bordas do card */
+    display: flex;
+    flex-direction: column;
     transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
@@ -448,36 +450,42 @@ img, video, iframe {
     border-color: var(--cor-destaque);
 }
 
-/* Circulo onde fica a imagem/ícone */
-.servico-icone {
-    width: 65px;
-    height: 65px;
-    background-color: rgba(212, 175, 55, 0.12); /* Fundo amarelado suave */
-    border-radius: 50%;
-    margin: 0 auto 1.5rem auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+/* Região da imagem no topo do card (destacada em vermelho) */
+.servico-imagem {
+    width: 100%;
+    height: 200px; /* Ajuste aqui a altura desejada da imagem do topo */
     overflow: hidden;
-    padding: 12px; /* Margem interna para a imagem não colar na borda */
+    background-color: #f0f0f0;
 }
 
-.servico-icone img {
+.servico-imagem img {
     width: 100%;
     height: 100%;
-    object-fit: contain; /* Mantém o ícone/imagem proporcional dentro do círculo */
+    object-fit: cover; /* Faz a foto preencher a área sem distorcer */
     display: block;
+    transition: transform 0.4s ease;
+}
+
+.servico-card:hover .servico-imagem img {
+    transform: scale(1.05); /* Efeito suave de zoom ao passar o mouse */
+}
+
+/* Área de texto do card */
+.servico-conteudo {
+    padding: 1.8rem 1.5rem;
+    text-align: center;
+    flex-grow: 1;
 }
 
 .servico-titulo {
-    font-size: 1.25rem;
+    font-size: 1.2rem;
     font-weight: 600;
     color: var(--cor-secundaria);
-    margin-bottom: 1rem;
+    margin-bottom: 0.8rem;
 }
 
 .servico-descricao {
-    font-size: 0.95rem;
+    font-size: 0.92rem;
     line-height: 1.6;
     color: var(--cor-texto);
 }
