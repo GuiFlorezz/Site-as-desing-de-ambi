@@ -1274,3 +1274,43 @@ ul {
         padding-bottom: 1rem;
     }
 }
+
+/* ==========================================
+   AJUSTE DE RODAPÉ PARA DESKTOP (Telas acima de 768px)
+========================================== */
+@media (min-width: 769px) {
+    
+    .footer {
+        text-align: left;
+        padding: 60px 40px 30px 40px;
+    }
+
+    .container-footer {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+        text-align: left;
+        max-width: 1200px;
+    }
+
+    /* Alinhamento dos blocos em colunas */
+    .footer-brand,
+    .footer-block {
+        text-align: left;
+    }
+
+    /* Linha decorativa dos títulos alinhada à esquerda */
+    .footer-titulo-menu {
+        display: block;
+    }
+
+    .footer-titulo-menu::after {
+        margin: 6px 0 0 0; /* Move o risco amarelo para o início do texto */
+    }
+
+    /* Rodapé inferior (Copyright) */
+    .footer-copy {
+        text-align: center; /* Mantém apenas a linha de direitos autorais no centro */
+        margin-top: 50px;
+    }
+}
