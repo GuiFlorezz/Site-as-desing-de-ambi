@@ -1,5 +1,5 @@
 /* ==========================================
-   1. RESET GLOBAL & VARIÁVEIS
+   1. RESET GLOBAL & VARIÁVEIS DE COR
    ========================================== */
 *, *::before, *::after {
     box-sizing: border-box;
@@ -12,7 +12,7 @@ html, body {
     max-width: 100%;
     overflow-x: hidden !important;
     position: relative;
-    background-color: var(--cor-primaria);
+    background-color: #ffffff;
 }
 
 :root {
@@ -39,7 +39,7 @@ ul {
     list-style: none;
 }
 
-/* Quebra automática de textos para não vazar a tela */
+/* Quebra automática de textos para evitar vazamentos */
 h1, h2, h3, h4, h5, h6, p, a, span, button {
     max-width: 100%;
     word-wrap: break-word;
@@ -52,7 +52,7 @@ img, video, iframe {
 }
 
 /* ==========================================
-   3. CABEÇALHO (HEADER) & MODO ILHA (DESKTOP)
+   2. CABEÇALHO (HEADER) - ESTILOS COMPLETOS
    ========================================== */
 .header-principal {
     position: fixed;
@@ -65,11 +65,92 @@ img, video, iframe {
     box-shadow: 0 2px 20px rgba(0, 0, 0, 0.06);
     z-index: 1000;
     
-    /* Transição suave de todas as propriedades */
-    transition: all 0.4s ease;
+    /* Animação fluida e suave para virar ilha */
+    transition: top 0.4s ease, 
+                width 0.4s ease, 
+                border-radius 0.4s ease, 
+                background-color 0.4s ease, 
+                box-shadow 0.4s ease,
+                border 0.4s ease,
+                padding 0.4s ease;
 }
 
-/* MODO ILHA QUANDO ROLA A PÁGINA (DESKTOP) */
+.container-header {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1.2rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: padding 0.4s ease;
+}
+
+/* Logo */
+.logo-texto {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--cor-secundaria, #111111);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: font-size 0.4s ease;
+}
+
+/* Links do Menu */
+.nav-lista {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+.nav-link {
+    color: var(--cor-secundaria, #111111);
+    font-weight: 500;
+    font-size: 0.88rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--cor-destaque, #D4AF37);
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover {
+    color: var(--cor-destaque, #D4AF37);
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* Botão de Destaque no Header */
+.btn-destaque {
+    background-color: var(--cor-destaque, #D4AF37);
+    color: #111111;
+    border: 1px solid var(--cor-destaque, #D4AF37);
+    padding: 0.7rem 1.4rem;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+}
+
+.btn-destaque:hover {
+    background-color: transparent;
+    color: var(--cor-destaque, #D4AF37);
+}
+
+/* MODO ILHA (ATIVADO AO ROLAR NO DESKTOP) */
 .header-principal.header-ilha {
     top: 15px;
     width: 900px;
@@ -82,18 +163,96 @@ img, video, iframe {
     border: 1px solid rgba(255, 255, 255, 0.4);
 }
 
-.header-ilha .container-header {
+.header-principal.header-ilha .container-header {
     padding: 0.6rem 2rem;
 }
 
-.header-ilha .logo-texto {
-    font-size: 1.15rem;
+.header-principal.header-ilha .logo-texto {
+    font-size: 1.2rem;
 }
 
-.header-ilha .btn-destaque {
-    padding: 0.5rem 1.2rem;
+.header-principal.header-ilha .btn-destaque {
+    padding: 0.55rem 1.2rem;
     font-size: 0.8rem;
     border-radius: 30px;
+}
+
+/* ==========================================
+   3. MENU MOBILE & BOTÃO HAMBÚRGUER
+   ========================================== */
+.menu-hamburguer {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 2000;
+}
+
+.menu-hamburguer .linha {
+    width: 100%;
+    height: 3px;
+    background-color: var(--cor-secundaria);
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+/* Animação do X no hambúrguer */
+.menu-hamburguer.ativo .linha:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+}
+
+.menu-hamburguer.ativo .linha:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-hamburguer.ativo .linha:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+}
+
+@media (max-width: 900px) {
+    .menu-hamburguer {
+        display: flex;
+    }
+
+    .header-cta {
+        display: none;
+    }
+
+    /* Subjanela do Menu no Mobile escondida via GPU (sem vazar a tela) */
+    .nav-principal {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100vh;
+        background-color: var(--cor-primaria);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transform: translateX(100%);
+        visibility: hidden;
+        transition: transform 0.4s ease-in-out, visibility 0.4s ease-in-out;
+        z-index: 1500;
+    }
+
+    .nav-lista {
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+    }
+
+    .nav-link {
+        font-size: 1.5rem;
+    }
+
+    .nav-principal.menu-aberto {
+        transform: translateX(0);
+        visibility: visible;
+    }
 }
 
 /* ==========================================
@@ -185,7 +344,7 @@ img, video, iframe {
 }
 
 /* ==========================================
-   5. ESTILOS GERAIS DE SEÇÃO
+   5. ESTILOS GERAIS DE SEÇÃO (TÍTULOS)
    ========================================== */
 .secao-cabecalho {
     text-align: center;
@@ -304,7 +463,7 @@ img, video, iframe {
 }
 
 /* ==========================================
-   11. SEÇÃO DE PROJETOS (3D COVERFLOW)
+   8. SEÇÃO DE PROJETOS (COVERFLOW 3D)
    ========================================== */
 .projetos-section {
     background-color: var(--cor-fundo, #f9f9f9);
@@ -419,7 +578,7 @@ img, video, iframe {
 .slider-btn.next { right: 20px; }
 
 /* ==========================================
-   13. SEÇÃO DE DIFERENCIAIS
+   9. SEÇÃO DE DIFERENCIAIS
    ========================================== */
 .diferenciais-section {
     background-color: var(--cor-primaria);
@@ -478,7 +637,7 @@ img, video, iframe {
 }
 
 /* ==========================================
-   12. SEÇÃO FAQ (PERGUNTAS FREQUENTES)
+   10. SEÇÃO FAQ (PERGUNTAS FREQUENTES)
    ========================================== */
 .faq-section {
     padding: 5rem 1.5rem;
@@ -558,8 +717,8 @@ img, video, iframe {
 }
 
 /* ==========================================
-   ESTILOS DA SEÇÃO CTA
-========================================== */
+   11. SEÇÃO CTA
+   ========================================== */
 .cta-section {
     background-color: #111111;
     padding: 60px 20px;
@@ -612,8 +771,8 @@ img, video, iframe {
 }
 
 /* ==========================================
-   ESTILOS DO RODAPÉ
-========================================== */
+   12. RODAPÉ (FOOTER)
+   ========================================== */
 .footer {
     background-color: #0a0a0a;
     color: #ffffff;
@@ -694,114 +853,7 @@ img, video, iframe {
 }
 
 /* ==========================================
-       HEADER & MODO ILHA NO MOBILE
-========================================== */
-    
-    /* Estado Normal (Topo da página: 100% de ponta a ponta) */
-    .header-principal {
-        width: 100% !important;
-        max-width: 100% !important;
-        top: 0 !important;
-        left: 0 !important;
-        right: 0 !important;
-        margin: 0 !important;
-        border-radius: 0 !important;
-    }
-
-    /* Estado Ilha (Ativado ao rolar a página no celular) */
-    .header-principal.header-ilha {
-        top: 10px !important;
-        width: 92% !important;
-        max-width: 92% !important;
-        margin: 0 auto !important;
-        border-radius: 30px !important;
-        background-color: rgba(255, 255, 255, 0.94) !important;
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15) !important;
-    }
-
-    .container-header {
-        padding: 0.8rem 1.2rem !important;
-    }
-
-/* ==========================================
-   20. MENU MOBILE (SEM CAUSAR VAZAMENTO)
-   ========================================== */
-.menu-hamburguer {
-    display: none;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 30px;
-    height: 21px;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    z-index: 2000;
-}
-
-.menu-hamburguer .linha {
-    width: 100%;
-    height: 3px;
-    background-color: var(--cor-secundaria);
-    border-radius: 5px;
-    transition: all 0.3s ease;
-}
-
-.menu-hamburguer.ativo .linha:nth-child(1) {
-    transform: translateY(9px) rotate(45deg);
-}
-
-.menu-hamburguer.ativo .linha:nth-child(2) {
-    opacity: 0;
-}
-
-.menu-hamburguer.ativo .linha:nth-child(3) {
-    transform: translateY(-9px) rotate(-45deg);
-}
-
-@media (max-width: 900px) {
-    .menu-hamburguer {
-        display: flex;
-    }
-
-    .header-cta {
-        display: none;
-    }
-
-    /* Solução do vazamento: Esconde via GPU sem expandir a tela */
-    .nav-principal {
-        position: fixed;
-        top: 0;
-        right: 0;
-        width: 100%;
-        height: 100vh;
-        background-color: var(--cor-primaria);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transform: translateX(100%);
-        visibility: hidden;
-        transition: transform 0.4s ease-in-out, visibility 0.4s ease-in-out;
-        z-index: 1500;
-    }
-
-    .nav-lista {
-        flex-direction: column;
-        align-items: center;
-        gap: 2rem;
-    }
-
-    .nav-link {
-        font-size: 1.5rem;
-    }
-
-    .nav-principal.menu-aberto {
-        transform: translateX(0);
-        visibility: visible;
-    }
-}
-
-/* ==========================================
-   23. ANIMAÇÕES DE ENTRADA
+   13. ANIMAÇÕES DE ENTRADA & BOTÃO WHATSAPP
    ========================================== */
 .animar-surgir {
     opacity: 0;
@@ -815,9 +867,6 @@ img, video, iframe {
     transform: translateY(0);
 }
 
-/* ==========================================
-   BOTÃO FLUTUANTE DO WHATSAPP
-   ========================================== */
 .whatsapp-btn {
     position: fixed !important;
     bottom: 25px;
@@ -853,12 +902,43 @@ img, video, iframe {
 }
 
 /* ==========================================
-   RESPONSIVIDADE MOBILE (TRAVAS ANTI-OVERFLOW)
+   14. AJUSTES PARA DESKTOP (Acima de 769px)
+   ========================================== */
+@media (min-width: 769px) {
+    .footer {
+        text-align: left;
+        padding: 60px 40px 30px 40px;
+    }
+
+    .container-footer {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+        text-align: left;
+        max-width: 1200px;
+    }
+
+    .footer-titulo-menu {
+        display: block;
+    }
+
+    .footer-titulo-menu::after {
+        margin: 6px 0 0 0;
+    }
+
+    .footer-copy {
+        text-align: center;
+        margin-top: 50px;
+    }
+}
+
+/* ==========================================
+   15. AJUSTES RESPONSIVOS MOBILE (Até 768px)
    ========================================== */
 @media (max-width: 768px) {
-    /* CABEÇALHO 100% FULL-WIDTH NO MOBILE */
-    .header-principal,
-    .header-ilha {
+    
+    /* HEADER NO CELULAR - Estado Normal (Top da página: Colado de ponta a ponta) */
+    .header-principal {
         width: 100% !important;
         max-width: 100% !important;
         top: 0 !important;
@@ -868,8 +948,21 @@ img, video, iframe {
         border-radius: 0 !important;
     }
 
+    /* HEADER NO CELULAR - Estado Ilha (Flutua bonitinho quando rola) */
+    .header-principal.header-ilha {
+        top: 10px !important;
+        width: 92% !important;
+        max-width: 92% !important;
+        left: 0 !important;
+        right: 0 !important;
+        margin: 0 auto !important;
+        border-radius: 30px !important;
+        background-color: rgba(255, 255, 255, 0.94) !important;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15) !important;
+    }
+
     .container-header {
-        padding: 1rem 1.2rem !important;
+        padding: 0.8rem 1.2rem !important;
     }
 
     .whatsapp-btn {
@@ -984,7 +1077,7 @@ img, video, iframe {
         gap: 2rem !important;
     }
 
-    /* TRAVA DE LARGURA DEFINITIVA */
+    /* TRAVA DEFINITIVA DE LARGURA */
     section, 
     footer, 
     .cta-section, 
@@ -995,34 +1088,5 @@ img, video, iframe {
         margin-left: 0 !important;
         margin-right: 0 !important;
         box-sizing: border-box !important;
-    }
-}
-
-/* DESKTOP FOOTER */
-@media (min-width: 769px) {
-    .footer {
-        text-align: left;
-        padding: 60px 40px 30px 40px;
-    }
-
-    .container-footer {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: flex-start;
-        text-align: left;
-        max-width: 1200px;
-    }
-
-    .footer-titulo-menu {
-        display: block;
-    }
-
-    .footer-titulo-menu::after {
-        margin: 6px 0 0 0;
-    }
-
-    .footer-copy {
-        text-align: center;
-        margin-top: 50px;
     }
 }
