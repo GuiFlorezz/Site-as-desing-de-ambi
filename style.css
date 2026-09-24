@@ -1113,17 +1113,59 @@ ul {
    ========================================== */
 @media (max-width: 768px) {
 
+    /* Espaçamento interno da seção Hero */
     .hero-section {
-        min-height: 75vh;
-        padding: 3rem 1rem;
+        padding: 80px 20px 60px 20px;
+        min-height: 85vh; /* Garante boa altura sem cortar na tela */
+        display: flex;
+        align-items: center;
     }
 
+    .container-hero {
+        width: 100%;
+        padding: 0;
+    }
+
+    /* Título com escala adequada e respiro */
     .hero-titulo {
-        font-size: 2rem;
+        font-size: 1.75rem; /* 28px */
+        line-height: 1.25;
+        margin-bottom: 14px;
+        font-weight: 700;
     }
 
+    /* Descrição levemente menor para facilitar leitura */
     .hero-descricao {
-        font-size: 1rem;
+        font-size: 0.95rem; /* 15px */
+        line-height: 1.5;
+        margin-bottom: 28px;
+        color: rgba(255, 255, 255, 0.9);
+    }
+
+    /* Container dos botões com espaçamento entre eles */
+    .hero-botoes {
+        display: flex;
+        flex-direction: column;
+        gap: 12px; /* Garante o respiro vertical entre os botões */
+        width: 100%;
+    }
+
+    /* Ajuste dos botões no toque (área de clique) */
+    .hero-botoes .btn {
+        width: 100%;
+        padding: 14px 20px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        border-radius: 6px;
+        text-align: center;
+        box-sizing: border-box;
+    }
+
+    /* Botão secundário com fundo semi-transparente para dar contraste */
+    .hero-botoes .btn-secundario {
+        background-color: rgba(0, 0, 0, 0.3);
+        border: 1px solid rgba(255, 255, 255, 0.5);
     }
     
     .sobre-section,
