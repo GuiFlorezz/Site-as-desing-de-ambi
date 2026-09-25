@@ -322,6 +322,7 @@ img, video, iframe {
     border-radius: 4px;
     text-decoration: none;
     transition: background-color 0.3s ease;
+    margin-right: 15px; /*afastar do botão ao lado */
 }
 
 .hero-botoes .btn-primario:hover {
