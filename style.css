@@ -381,8 +381,8 @@ img, video, iframe {
     padding: 7rem 2rem;
     
     /* Imagem de fundo com gradiente escuro por cima para legibilidade */
-    background: linear-gradient(rgba(0, 0, 0, 0.70), rgba(0, 0, 0, 0.70)), 
-                url('assets/video/img/fundo_sobre.png'); /* <- COLOQUE O CAMINHO DA SUA IMAGEM AQUI */
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.70), rgba(0, 0, 0, 0.70)), 
+                url('assets/video/img/fundo_sobre2.jpg'); /* <- COLOQUE O CAMINHO DA SUA IMAGEM AQUI */
     
     background-size: cover;
     background-position: center;
