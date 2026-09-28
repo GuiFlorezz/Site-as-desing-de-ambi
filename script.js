@@ -191,3 +191,193 @@ faqItems.forEach(item => {
         }
     });
 });
+document.addEventListener('DOMContentLoaded', () => {
+    const track = document.getElementById('depoimentosTrack');
+    const wrapper = document.querySelector('.depoimentos-carrossel-wrapper');
+    const dotsContainer = document.getElementById('depoimentosDots');
+    const cards = document.querySelectorAll('.depoimento-card');
+
+    if (!track || cards.length === 0) return;
+
+    let currentIndex = 0;
+    let autoPlayTimer = null;
+    let resumeTimeout = null;
+    let isDragging = false;
+    let startX = 0;
+    let currentTranslate = 0;
+    let prevTranslate = 0;
+
+    // Calcula quantos cartões aparecem por vez dependendo da largura do ecrã
+    function getVisibleCardsCount() {
+        if (window.innerWidth <= 650) return 1;
+        if (window.innerWidth <= 992) return 2;
+        return 3;
+    }
+
+    function getMaxIndex() {
+        return Math.max(0, cards.length - getVisibleCardsCount());
+    }
+
+    // Cria os pontos de navegação (Dots)
+    function createDots() {
+        dotsContainer.innerHTML = '';
+        const maxIndex = getMaxIndex();
+
+        for (let i = 0; i <= maxIndex; i++) {
+            const dot = document.createElement('div');
+            dot.classList.add('dot');
+            if (i === 0) dot.classList.add('active');
+            dot.addEventListener('click', () => {
+                goToSlide(i);
+                userInteracted();
+            });
+            dotsContainer.appendChild(dot);
+        }
+    }
+
+    function updateDots() {
+        const dots = dotsContainer.querySelectorAll('.dot');
+        dots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentIndex);
+        });
+    }
+
+    function goToSlide(index) {
+        const maxIndex = getMaxIndex();
+        currentIndex = Math.min(Math.max(index, 0), maxIndex);
+
+        const cardWidth = cards[0].getBoundingClientRect().width;
+        const gap = parseFloat(getComputedStyle(track).gap) || 0;
+        const moveAmount = (cardWidth + gap) * currentIndex;
+
+        track.style.transition = 'transform 0.5s cubic-bezier(0.25, 1, 0.5, 1)';
+        track.style.transform = `translateX(-${moveAmount}px)`;
+        
+        currentTranslate = -moveAmount;
+        prevTranslate = currentTranslate;
+
+        updateDots();
+    }
+
+    function nextSlide() {
+        const maxIndex = getMaxIndex();
+        if (currentIndex >= maxIndex) {
+            goToSlide(0); // Volta ao início
+        } else {
+            goToSlide(currentIndex + 1);
+        }
+    }
+
+    function startAutoPlay() {
+        stopAutoPlay();
+        autoPlayTimer = setInterval(nextSlide, 4000); // Avança a cada 4 segundos
+    }
+
+    function stopAutoPlay() {
+        if (autoPlayTimer) clearInterval(autoPlayTimer);
+    }
+
+    // Pára o autoplay no toque/drag e retoma após 5 segundos de inatividade
+    function userInteracted() {
+        stopAutoPlay();
+        if (resumeTimeout) clearTimeout(resumeTimeout);
+        resumeTimeout = setTimeout(startAutoPlay, 5000);
+    }
+
+    /* Eventos de Arrastar (Mouse e Touch) */
+    wrapper.addEventListener('mousedown', startDrag);
+    wrapper.addEventListener('touchstart', startDrag, { passive: true });
+
+    wrapper.addEventListener('mousemove', drag);
+    wrapper.addEventListener('touchmove', drag, { passive: true });
+
+    wrapper.addEventListener('mouseup', endDrag);
+    wrapper.addEventListener('mouseleave', endDrag);
+    wrapper.addEventListener('touchend', endDrag);
+
+    function startDrag(e) {
+        isDragging = true;
+        startX = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
+        track.style.transition = 'none';
+        userInteracted();
+    }
+
+    function drag(e) {
+        if (!isDragging) return;
+        const currentX = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
+        const diff = currentX - startX;
+        track.style.transform = `translateX(${prevTranslate + diff}px)`;
+    }
+
+    function endDrag(e) {
+        if (!isDragging) return;
+        isDragging = false;
+        
+        const endX = e.type.includes('touch') ? (e.changedTouches[0] ? e.changedTouches[0].clientX : startX) : e.clientX;
+        const diff = endX - startX;
+
+        // Se arrastou mais de 50px, troca o slide
+        if (diff < -50) {
+            goToSlide(currentIndex + 1);
+        } else if (diff > 50) {
+            goToSlide(currentIndex - 1);
+        } else {
+            goToSlide(currentIndex);
+        }
+    }
+
+    // Inicialização e ajuste responsivo ao redimensionar
+    createDots();
+    startAutoPlay();
+
+    window.addEventListener('resize', () => {
+        createDots();
+        goToSlide(currentIndex);
+    });
+});
+
+/* ==========================================
+   ANIMAÇÃO DOS CONTADORES NA SEÇÃO SOBRE
+   ========================================== */
+document.addEventListener('DOMContentLoaded', () => {
+    const contadores = document.querySelectorAll('.contador');
+    const sobreSection = document.querySelector('.sobre-section');
+
+    if (!sobreSection || contadores.length === 0) return;
+
+    let animado = false;
+
+    function iniciarContagem() {
+        contadores.forEach(contador => {
+            const alvo = +contador.getAttribute('data-target');
+            const duracao = 2000; // Tempo em milissegundos (2 segundos)
+            const incremento = alvo / (duracao / 16); // 60 FPS
+
+            let valorAtual = 0;
+
+            const atualizarNumero = () => {
+                valorAtual += incremento;
+                if (valorAtual < alvo) {
+                    contador.innerText = Math.ceil(valorAtual);
+                    requestAnimationFrame(atualizarNumero);
+                } else {
+                    contador.innerText = alvo;
+                }
+            };
+
+            atualizarNumero();
+        });
+    }
+
+    // Observer para disparar a animação quando o usuário rolar até a seção
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !animado) {
+                iniciarContagem();
+                animado = true; // Garante que roda apenas uma vez
+            }
+        });
+    }, { threshold: 0.3 });
+
+    observer.observe(sobreSection);
+});

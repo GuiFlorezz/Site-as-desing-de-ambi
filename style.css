@@ -375,44 +375,184 @@ img, video, iframe {
 }
 
 /* ==========================================
-   6. SEÇÃO SOBRE (COM IMAGEM DE FUNDO E MÁSCARA)
+   SEÇÃO SOBRE (DESIGN PREMIUM & ANIMAÇÕES)
    ========================================== */
 .sobre-section {
+    background-color: #0d0d0d; /* Escuro profundo elegância */
+    color: #ffffff;
+    padding: 6rem 2rem;
     position: relative;
-    padding: 7rem 2rem;
-    
-    /* Imagem de fundo com gradiente escuro por cima para legibilidade */
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.70), rgba(0, 0, 0, 0.70)), 
-                url('assets/video/img/fundo_sobre2.jpg'); /* <- COLOQUE O CAMINHO DA SUA IMAGEM AQUI */
-    
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: scroll; /* Use 'fixed' se quiser efeito parallax no computador */
+    overflow: hidden;
 }
 
 .container-sobre {
-    max-width: 800px;
+    max-width: 1200px;
     margin: 0 auto;
-    text-align: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+/* Lado Esquerdo - Imagem & Animação */
+.sobre-imagem-container {
     position: relative;
-    z-index: 2;
 }
 
-/* Ajuste de cor do título para destacar no fundo escuro */
-.sobre-section .secao-titulo {
+.sobre-imagem-wrapper {
+    position: relative;
+    width: 100%;
+    height: 480px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(202, 161, 82, 0.2);
+}
+
+.sobre-img-kenburns {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    animation: kenburns 18s infinite alternate ease-in-out;
+}
+
+/* Animação Zoom Lento (Cinema) */
+@keyframes kenburns {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.12); }
+}
+
+.sobre-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.5) 100%);
+}
+
+/* Selo Flutuante Glassmorphism */
+.sobre-badge-glass {
+    position: absolute;
+    bottom: -20px;
+    right: -15px;
+    background: rgba(22, 22, 22, 0.75);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(202, 161, 82, 0.4);
+    border-radius: 14px;
+    padding: 1.2rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+    animation: flutuar 4s ease-in-out infinite alternate;
+}
+
+@keyframes flutuar {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-8px); }
+}
+
+.badge-icone {
+    color: #caa152;
+    font-size: 1.5rem;
+}
+
+.badge-titulo {
+    display: block;
+    font-weight: 700;
+    font-size: 0.95rem;
     color: #ffffff;
-    margin-bottom: 2rem;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-/* Ajuste de cor dos parágrafos */
-.sobre-paragrafo {
-    font-size: 1.15rem;
-    line-height: 1.8;
-    margin-bottom: 1.5rem;
-    color: #f0f0f0; /* Branco suave para não cansar a vista */
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+.badge-subtitulo {
+    display: block;
+    font-size: 0.78rem;
+    color: #caa152;
+}
+
+/* Lado Direito - Textos e Tipografia */
+.sobre-tag {
+    color: #caa152;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.sobre-titulo {
+    font-size: 2.3rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 0.8rem;
+    line-height: 1.2;
+}
+
+.linha-dourada {
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, #caa152, #f1d38a);
+    margin-bottom: 1.8rem;
+    border-radius: 2px;
+}
+
+.sobre-texto {
+    color: #b3b3b3;
+    font-size: 0.98rem;
+    line-height: 1.7;
+    margin-bottom: 1.2rem;
+}
+
+/* Contadores / Métricas */
+.sobre-metricas {
+    display: flex;
+    gap: 2.5rem;
+    margin-top: 2.2rem;
+    padding-top: 1.8rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.metrica-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.metrica-numero {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #caa152;
+    line-height: 1;
+}
+
+.metrica-rotulo {
+    font-size: 0.82rem;
+    color: #888888;
+    margin-top: 0.4rem;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+}
+
+/* Responsividade */
+@media (max-width: 992px) {
+    .container-sobre {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+
+    .sobre-imagem-wrapper {
+        height: 360px;
+    }
+
+    .sobre-badge-glass {
+        right: 10px;
+        bottom: 10px;
+    }
+}
+
+@media (max-width: 550px) {
+    .sobre-metricas {
+        flex-direction: column;
+        gap: 1.2rem;
+    }
 }
 
 /* ==========================================
@@ -608,44 +748,71 @@ img, video, iframe {
 .slider-btn.next { right: 20px; }
 
 /* ==========================================
-   SEÇÃO DE DEPOIMENTOS / FEEDBACKS (PREMIUM)
+   SEÇÃO DE DEPOIMENTOS (TEMA ESCURO - PREMIUM)
    ========================================== */
 .depoimentos-section {
-    background-color: #ffffff;
+    background: linear-gradient(180deg, #0f0f0f 0%, #181818 100%); /* Fundo escuro para destaque */
     padding: 6rem 2rem;
+    overflow: hidden;
+}
+
+/* Ajuste das cores do título da seção para o fundo escuro */
+.depoimentos-section .secao-titulo {
+    color: #ffffff;
+}
+
+.depoimentos-section .secao-subtitulo {
+    color: #a0a0a0;
 }
 
 .container-depoimentos {
-    max-width: 1140px;
+    max-width: 1200px;
     margin: 0 auto;
 }
 
-.depoimentos-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
+.depoimentos-carrossel-wrapper {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    padding: 1rem 0 2rem;
+    cursor: grab;
 }
 
+.depoimentos-carrossel-wrapper:active {
+    cursor: grabbing;
+}
+
+.depoimentos-track {
+    display: flex;
+    gap: 1.8rem;
+    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+    will-change: transform;
+}
+
+/* Cards em tom grafite/preto com borda dourada suave */
 .depoimento-card {
-    background-color: #ffffff;
-    border: 1px solid #ebebeb;
+    min-width: calc(33.333% - 1.2rem);
+    box-sizing: border-box;
+    background-color: #1e1e1e;
+    border: 1px solid rgba(202, 161, 82, 0.25); /* Borda dourada discreta */
     border-radius: 16px;
     padding: 2rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
     transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+    user-select: none;
 }
 
 .depoimento-card:hover {
-    transform: translateY(-7px);
-    box-shadow: 0 18px 35px rgba(212, 175, 55, 0.12);
-    border-color: rgba(202, 161, 82, 0.4);
+    transform: translateY(-5px);
+    box-shadow: 0 18px 35px rgba(202, 161, 82, 0.18);
+    border-color: rgba(202, 161, 82, 0.6); /* Brilho dourado mais forte no hover */
 }
 
 .depoimento-estrelas {
-    color: #caa152; /* Dourado */
+    color: #caa152; /* Dourado vibrante */
     font-size: 1.15rem;
     letter-spacing: 3px;
     margin-bottom: 1rem;
@@ -654,7 +821,7 @@ img, video, iframe {
 .depoimento-texto {
     font-size: 0.95rem;
     line-height: 1.65;
-    color: #555555;
+    color: #e0e0e0; /* Texto claro de alta legibilidade */
     font-style: italic;
     margin-bottom: 1.8rem;
     flex-grow: 1;
@@ -664,11 +831,10 @@ img, video, iframe {
     display: flex;
     align-items: center;
     gap: 1rem;
-    border-top: 1px solid #f2f2f2;
+    border-top: 1px solid rgba(255, 255, 255, 0.08); /* Linha divisória sutil */
     padding-top: 1.2rem;
 }
 
-/* Avatar com inicial em Gradiente Dourado */
 .autor-avatar {
     width: 46px;
     height: 46px;
@@ -681,15 +847,7 @@ img, video, iframe {
     justify-content: center;
     font-weight: 700;
     font-size: 1.1rem;
-    box-shadow: 0 4px 10px rgba(202, 161, 82, 0.25);
-    overflow: hidden;
-}
-
-/* Se preferir usar foto do cliente no lugar da inicial, adicione uma <img> dentro de .autor-avatar */
-.autor-avatar img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    box-shadow: 0 4px 12px rgba(202, 161, 82, 0.35);
 }
 
 .autor-info {
@@ -700,30 +858,52 @@ img, video, iframe {
 .autor-nome {
     font-size: 0.98rem;
     font-weight: 700;
-    color: #111111;
+    color: #ffffff; /* Nome em branco puro */
     margin: 0;
 }
 
 .autor-local {
     font-size: 0.82rem;
-    color: #888888;
+    color: #caa152; /* Subtítulo do autor em dourado */
     margin-top: 2px;
 }
 
-/* Responsividade */
+/* Indicadores de Pontos (Dots) */
+.depoimentos-dots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.6rem;
+    margin-top: 2rem;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #333333; /* Pontos inativos em cinza escuro */
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.dot.active {
+    background-color: #caa152;
+    width: 28px;
+    border-radius: 10px;
+}
+
+/* Adaptabilidade Responsiva */
 @media (max-width: 992px) {
-    .depoimentos-grid {
-        grid-template-columns: repeat(2, 1fr);
+    .depoimento-card {
+        min-width: calc(50% - 0.9rem);
     }
 }
 
 @media (max-width: 650px) {
-    .depoimentos-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
+    .depoimento-card {
+        min-width: 100%;
     }
 }
-
 
 /* ==========================================
    9. SEÇÃO DE DIFERENCIAIS (DESIGN PREMIUM)

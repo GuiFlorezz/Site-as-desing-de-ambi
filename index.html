@@ -86,21 +86,60 @@
     </div>
 
 </section>
-
 <!-- ==========================================
-    SEÇÃO SOBRE
+    SEÇÃO SOBRE (LAYOUT PREMIUM & INTERATIVO)
 ========================================== -->
-<section id="sobre" class="sobre-section animar-surgir">
+<section id="sobre" class="sobre-section">
     <div class="container-sobre">
-        <div class="sobre-textos">
-            <h2 class="secao-titulo">Sobre a AS Design de Ambientes</h2>
-            <p class="sobre-paragrafo">
+        
+        <!-- LADO ESQUERDO: Imagem com Movimento + Card Flutuante -->
+        <div class="sobre-imagem-container">
+            <div class="sobre-imagem-wrapper">
+                <!-- Substitua pelo caminho da sua imagem -->
+                <img src="assets/video/img/img_secaoSobre.jpg" alt="AS Design de Ambientes" class="sobre-img-kenburns">
+                <div class="sobre-overlay"></div>
+            </div>
+            
+            <!-- Selo Flutuante com efeito Vidro (Glassmorphism) -->
+            <div class="sobre-badge-glass">
+                <div class="badge-icone">✦</div>
+                <div class="badge-conteudo">
+                    <span class="badge-titulo">Padrão Premium</span>
+                    <span class="badge-subtitulo">Projetos Executivos de Luxo</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- LADO DIREITO: Conteúdo + Métricas Animadas -->
+        <div class="sobre-conteudo">
+            <span class="sobre-tag">ALTA MARCENARIA & DESIGN</span>
+            <h2 class="sobre-titulo">Sobre a AS Design de Ambientes</h2>
+            <div class="linha-dourada"></div>
+
+            <p class="sobre-texto">
                 Somos especialistas em transformar espaços através de projetos personalizados e marcenaria sob medida. Nossa proposta é entregar não apenas móveis, mas soluções que se adaptem perfeitamente ao seu estilo de vida e às necessidades do seu ambiente.
             </p>
-            <p class="sobre-paragrafo">
-                Prezamos pela excelência em cada etapa, desde o planejamento até a montagem final. Nosso compromisso é com a qualidade dos materiais, o acabamento impecável, a atenção aos mínimos detalhes e um atendimento próximo e transparente para cada cliente.
+            <p class="sobre-texto">
+                Prezamos pela excelência em cada etapa, desde o planejamento até a montagem final. Nosso compromisso é com a qualidade dos materiais, o acabamento impecável, a atenção aos mínimos detalhes e um atendimento próximo e transparente.
             </p>
+
+            <!-- Métricas Animadas (Contadores) -->
+            <div class="sobre-metricas">
+                <div class="metrica-item">
+                    <span class="metrica-numero"><span class="contador" data-target="5">0</span>+</span>
+                    <span class="metrica-rotulo">Anos de Mercado</span>
+                </div>
+                <div class="metrica-item">
+                    <span class="metrica-numero"><span class="contador" data-target="100">0</span>+</span>
+                    <span class="metrica-rotulo">Projetos Entregues</span>
+                </div>
+                <div class="metrica-item">
+                    <span class="metrica-numero"><span class="contador" data-target="100">0</span>%</span>
+                    <span class="metrica-rotulo">Sob Medida</span>
+                </div>
+            </div>
         </div>
+
     </div>
 </section>
 
@@ -171,7 +210,7 @@
             <div class="galeria-coverflow">
                 <div class="projeto-item">
                     <div class="card-tag">
-                        <span class="tag-logo">es.</span>
+                        <span class="tag-logo">A.S</span>
                         <span class="tag-text">Quarto sob medida</span>
                     </div>
                     <img src="assets/video/img/img_1.jpeg" alt="Cozinha Planejada" class="projeto-img">
@@ -179,7 +218,7 @@
 
                 <div class="projeto-item">
                     <div class="card-tag">
-                        <span class="tag-logo">es.</span>
+                        <span class="tag-logo">A.S</span>
                         <span class="tag-text">Sala de Estar</span>
                     </div>
                     <img src="assets/video/img/img_2.jpeg" alt="Sala de Estar" class="projeto-img">
@@ -187,7 +226,7 @@
 
                 <div class="projeto-item">
                     <div class="card-tag">
-                        <span class="tag-logo">es.</span>
+                        <span class="tag-logo">A.S</span>
                         <span class="tag-text">Área de atendimento</span>
                     </div>
                     <img src="assets/video/img/img_3.jpeg" alt="Dormitório Casal" class="projeto-img">
@@ -195,7 +234,7 @@
 
                 <div class="projeto-item">
                     <div class="card-tag">
-                        <span class="tag-logo">es.</span>
+                        <span class="tag-logo">A.S</span>
                         <span class="tag-text">cozinha planejada</span>
                     </div>
                     <img src="assets/video/img/img_4.jpeg" alt="Banheiro Sob Medida" class="projeto-img">
@@ -203,7 +242,7 @@
 
                 <div class="projeto-item">
                     <div class="card-tag">
-                        <span class="tag-logo">es.</span>
+                        <span class="tag-logo">A.S</span>
                         <span class="tag-text">Home Office</span>
                     </div>
                     <img src="assets/video/img/img_5.jpeg" alt="Home Office" class="projeto-img">
@@ -211,7 +250,7 @@
 
                 <div class="projeto-item">
                     <div class="card-tag">
-                        <span class="tag-logo">es.</span>
+                        <span class="tag-logo">A.S</span>
                         <span class="tag-text">Sala de estar
                         </span>
                     </div>
@@ -226,7 +265,7 @@
 </section>
 
 <!-- ==========================================
-    SEÇÃO DE DEPOIMENTOS / FEEDBACKS
+    SEÇÃO DE DEPOIMENTOS (CARROSSEL AUTOMÁTICO)
 ========================================== -->
 <section id="depoimentos" class="depoimentos-section animar-surgir">
     <div class="container-depoimentos">
@@ -235,59 +274,103 @@
             <p class="secao-subtitulo">A satisfação de quem confiou o seu projeto à AS Ambientes.</p>
         </header>
 
-        <div class="depoimentos-grid">
+        <div class="depoimentos-carrossel-wrapper">
+            <div class="depoimentos-track" id="depoimentosTrack">
 
-            <!-- Card 1 -->
-            <div class="depoimento-card">
-                <div class="depoimento-estrelas">★★★★★</div>
-                <p class="depoimento-texto">
-                    "A AS Ambientes transformou completamente o nosso apartamento. O nível de acabamento da marcenaria e o cumprimento rigoroso dos prazos foram impecáveis. Recomendo de olhos fechados!"
-                </p>
-                <div class="depoimento-autor">
-                    <div class="autor-avatar">
-                        <span>R</span>
-                    </div>
-                    <div class="autor-info">
-                        <h4 class="autor-nome">Roberto & Ana Paula</h4>
-                        <span class="autor-local">Projeto Residencial Completo</span>
+                <!-- Card 1 -->
+                <div class="depoimento-card">
+                    <div class="depoimento-estrelas">★★★★★</div>
+                    <p class="depoimento-texto">
+                        "A AS Ambientes transformou completamente o nosso apartamento. O nível de acabamento da marcenaria e o cumprimento rigoroso dos prazos foram impecáveis."
+                    </p>
+                    <div class="depoimento-autor">
+                        <div class="autor-avatar"><span>R</span></div>
+                        <div class="autor-info">
+                            <h4 class="autor-nome">Roberto & Ana Paula</h4>
+                            <span class="autor-local">Projeto Residencial Completo</span>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Card 2 -->
-            <div class="depoimento-card">
-                <div class="depoimento-estrelas">★★★★★</div>
-                <p class="depoimento-texto">
-                    "Desde o primeiro contato até a montagem final, a atenção aos detalhes nos impressionou muito. A cozinha ficou exatamente como planejamos no projeto 3D, com ferragens de altíssima qualidade."
-                </p>
-                <div class="depoimento-autor">
-                    <div class="autor-avatar">
-                        <span>M</span>
-                    </div>
-                    <div class="autor-info">
-                        <h4 class="autor-nome">Mariana Costa</h4>
-                        <span class="autor-local">Cozinha Planejada</span>
+                <!-- Card 2 -->
+                <div class="depoimento-card">
+                    <div class="depoimento-estrelas">★★★★★</div>
+                    <p class="depoimento-texto">
+                        "Desde o primeiro contato até a montagem final, a atenção aos detalhes nos impressionou muito. A cozinha ficou exatamente como no projeto 3D."
+                    </p>
+                    <div class="depoimento-autor">
+                        <div class="autor-avatar"><span>M</span></div>
+                        <div class="autor-info">
+                            <h4 class="autor-nome">Mariana Costa</h4>
+                            <span class="autor-local">Cozinha Planejada</span>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Card 3 -->
-            <div class="depoimento-card">
-                <div class="depoimento-estrelas">★★★★★</div>
-                <p class="depoimento-texto">
-                    "Alinhamento perfeito das portas, acabamento impecável e uma equipe de instalação extremamente cuidadosa e limpa. Diferencial raro de encontrar no mercado de marcenaria."
-                </p>
-                <div class="depoimento-autor">
-                    <div class="autor-avatar">
-                        <span>C</span>
-                    </div>
-                    <div class="autor-info">
-                        <h4 class="autor-nome">Carlos Eduardo</h4>
-                        <span class="autor-local">Móveis Corporativos</span>
+                <!-- Card 3 -->
+                <div class="depoimento-card">
+                    <div class="depoimento-estrelas">★★★★★</div>
+                    <p class="depoimento-texto">
+                        "Alinhamento perfeito das portas, acabamento impecável e uma equipe de instalação extremamente cuidadosa. Diferencial raro de encontrar no mercado."
+                    </p>
+                    <div class="depoimento-autor">
+                        <div class="autor-avatar"><span>C</span></div>
+                        <div class="autor-info">
+                            <h4 class="autor-nome">Carlos Eduardo</h4>
+                            <span class="autor-local">Móveis Corporativos</span>
+                        </div>
                     </div>
                 </div>
+
+                <!-- Card 4 -->
+                <div class="depoimento-card">
+                    <div class="depoimento-estrelas">★★★★★</div>
+                    <p class="depoimento-texto">
+                        "O closet ficou um espetáculo! Aproveitaram cada centímetro com divisórias inteligentes e iluminação LED embutida sensacional."
+                    </p>
+                    <div class="depoimento-autor">
+                        <div class="autor-avatar"><span>F</span></div>
+                        <div class="autor-info">
+                            <h4 class="autor-nome">Fernanda Rodrigues</h4>
+                            <span class="autor-local">Suíte Master & Closets</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="depoimento-card">
+                    <div class="depoimento-estrelas">★★★★★</div>
+                    <p class="depoimento-texto">
+                        "Contratamos para a área gourmet e superou todas as expectativas. Material resistente de altíssima qualidade e estética surpreendente."
+                    </p>
+                    <div class="depoimento-autor">
+                        <div class="autor-avatar"><span>G</span></div>
+                        <div class="autor-info">
+                            <h4 class="autor-nome">Camila & Gabriel</h4>
+                            <span class="autor-local">Área Gourmet</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 6 -->
+                <div class="depoimento-card">
+                    <div class="depoimento-estrelas">★★★★★</div>
+                    <p class="depoimento-texto">
+                        "Atendimento humano, transparente e pontual. O painel da sala com fita LED e acabamento amadeirado virou a estrela da nossa casa."
+                    </p>
+                    <div class="depoimento-autor">
+                        <div class="autor-avatar"><span>J</span></div>
+                        <div class="autor-info">
+                            <h4 class="autor-nome">Juliana Mendes</h4>
+                            <span class="autor-local">Sala de Estar</span>
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
+            <!-- Indicadores (Pontos) -->
+            <div class="depoimentos-dots" id="depoimentosDots"></div>
         </div>
     </div>
 </section>
